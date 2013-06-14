@@ -1,44 +1,45 @@
 # .gitignore for Grails 1.2 and 1.3
 
 # web application files
-/web-app/WEB-INF
+server/web-app/WEB-INF
 
 # IDE support files
-/.classpath
-/.launch
-/.project
-/.settings
-/*.launch
-/*.tmproj
-/ivy*
-/eclipse
+server/.classpath
+server/.launch
+server/.project
+server/.settings
+server/*.launch
+server/*.tmproj
+server/ivy*
+server/eclipse
 
 # default HSQL database files for production mode
-/prodDb.*
+server/prodDb.*
 
 # general HSQL database files
 *Db.properties
 *Db.script
 
 # logs
-/stacktrace.log
-/test/reports
-/logs
+server/stacktrace.log
+server/test/reports
+server/logs
 
 # project release file
-/*.war
+server/*.war
 
 # plugin release file
-/*.zip
+server/*.zip
 
 # older plugin install locations
-/plugins
-/web-app/plugins
-/web-app/WEB-INF/classes
+server/plugins
+server/web-app/plugins
+server/web-app/WEB-INF/classes
 
 # "temporary" build files
-/target
+server/target
 
 # other
 *.iws
 
+server/target-eclipse
