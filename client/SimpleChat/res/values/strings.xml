@@ -9,5 +9,6 @@
     <string name="nickname">Nick</string>
     <string name="send">Send</string>
     <string name="server">Server</string>
+    <string name="port">Port</string>
 
 </resources>

@@ -24,11 +24,16 @@ public class ConfigActivity extends Activity {
 	protected void onStart() {
 		super.onStart();
 
-		EditText server = (EditText) findViewById(R.id.server);
 		SharedPreferences prefs = getSharedPreferences(Magic.PREFERENCES,
 				Context.MODE_PRIVATE);
+
+		EditText server = (EditText) findViewById(R.id.server);
 		String servername = prefs.getString(Magic.P_HOST, "");
 		server.setText(servername);
+
+		EditText port = (EditText) findViewById(R.id.port);
+		int portNumber = prefs.getInt(Magic.P_PORT, 80);
+		port.setText(Integer.toString(portNumber));
 
 	}
 
@@ -43,22 +48,32 @@ public class ConfigActivity extends Activity {
 
 	public void doConfig(View view) {
 
+		boolean ok = false;
+		
+		SharedPreferences prefs = getSharedPreferences(Magic.PREFERENCES,
+				Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = prefs.edit();
+
+		
+		// Save server
 		EditText server = (EditText) findViewById(R.id.server);
-
 		String servername = server.getText().toString().trim();
-
-		// If nick is not empty, store it and start chat
 		if (!"".equals(servername)) {
-
-			SharedPreferences prefs = getSharedPreferences(Magic.PREFERENCES,
-					Context.MODE_PRIVATE);
-			SharedPreferences.Editor editor = prefs.edit();
 			editor.putString(Magic.P_HOST, servername);
-			editor.commit();
-
-			NavUtils.navigateUpFromSameTask(this);
+			ok = true;
 		}
 
+		// Save port
+		EditText port = (EditText) findViewById(R.id.port);
+		String portNumber = port.getText().toString().trim();
+		if (!"".equals(portNumber)) {
+			editor.putInt(Magic.P_PORT, Integer.parseInt(portNumber));
+		}
+
+		if (ok) {
+			editor.commit();
+			NavUtils.navigateUpFromSameTask(this);
+		}
 	}
 
 	@Override

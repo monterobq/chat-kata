@@ -2,8 +2,9 @@ package org.ejmc.android.simplechat;
 
 import org.ejmc.android.simplechat.model.ChatList;
 import org.ejmc.android.simplechat.model.Message;
-import org.ejmc.android.simplechat.net.GetChatTask;
-import org.ejmc.android.simplechat.net.PostChatTask;
+import org.ejmc.android.simplechat.net.NetConfig;
+import org.ejmc.android.simplechat.net.NetRequests;
+import org.ejmc.android.simplechat.net.NetResponseHandler;
 
 import android.app.Activity;
 import android.content.Context;
@@ -28,10 +29,10 @@ public class ChatActivity extends Activity {
 	/**
 	 * Gets chat from server
 	 */
-	private class GetTask extends GetChatTask {
+	private class GetChatHandler extends NetResponseHandler<ChatList> {
 
 		@Override
-		protected void onSuccess(ChatList result) {
+		public void onSuccess(ChatList result) {
 
 			boolean added = false;
 			// Filter my messages
@@ -57,9 +58,9 @@ public class ChatActivity extends Activity {
 	 * Send message to server and paint it on return ;
 	 * 
 	 */
-	private class PostTask extends PostChatTask {
+	private class PostChatHandler extends NetResponseHandler<Message> {
 		@Override
-		protected void onSuccess(Message result) {
+		public void onSuccess(Message result) {
 			tv.append(result.getNick() + ": " + result.getMessage() + "\n");
 			updateScroll();
 		}
@@ -80,6 +81,12 @@ public class ChatActivity extends Activity {
 
 	private ScrollView scroller;
 
+	private NetRequests netRequests;
+
+	private GetChatHandler getChatHandler = new GetChatHandler();
+
+	private PostChatHandler postChatHandler = new PostChatHandler();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -88,16 +95,21 @@ public class ChatActivity extends Activity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 
+		tv = (TextView) findViewById(R.id.chat);
+		scroller = (ScrollView) findViewById(R.id.chatScroll);
+
 		periodicHandler = new Handler();
 
 		// Get nick name
 		SharedPreferences prefs = getSharedPreferences(Magic.PREFERENCES,
 				Context.MODE_PRIVATE);
-		nick = prefs.getString("nick", "!undef!");
+		nick = prefs.getString(Magic.P_NICK, "!undef!");
 
-		tv = (TextView) findViewById(R.id.chat);
-		scroller = (ScrollView) findViewById(R.id.chatScroll);
-
+		// Configure network
+		String host = prefs.getString(Magic.P_HOST, "localhost");
+		int port = prefs.getInt(Magic.P_PORT, 80);
+		NetConfig netConfig = new NetConfig(host, port);
+		netRequests = new NetRequests(netConfig);
 	}
 
 	@Override
@@ -137,7 +149,7 @@ public class ChatActivity extends Activity {
 				@Override
 				public void run() {
 					if (started) {
-						new GetTask().execute(lastSeq);
+						netRequests.chatGET(lastSeq, getChatHandler);
 					}
 				}
 			};
@@ -160,7 +172,7 @@ public class ChatActivity extends Activity {
 
 			// send to server if not empty
 			Message m = new Message(nick, message);
-			new PostTask().execute(m);
+			netRequests.chatPOST(m, postChatHandler);
 		}
 
 		// Clear input
@@ -171,18 +183,15 @@ public class ChatActivity extends Activity {
 	 * Set up the {@link android.app.ActionBar}.
 	 */
 	private void setupActionBar() {
-
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-
 	}
 
 	private void updateScroll() {
+		// Run scroll after text additions
 		scroller.post(new Runnable() {
-
 			@Override
 			public void run() {
 				scroller.smoothScrollTo(0, tv.getBottom());
-
 			}
 		});
 	}
