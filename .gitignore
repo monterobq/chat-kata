@@ -41,3 +41,5 @@ server/target
 
 # other
 *.iws
+
+server/target-eclipse
