@@ -22,17 +22,17 @@ The following are the definition of the API resources.
 
 This the main resource of the chat server.
 
-**Endpoint*** ```/api/chat```
+**Endpoint:** ```/api/chat```
 
 #### Get chat messages ####
 
-##### Method ##### GET
+**Method:** GET
 
-* *Parameters:*
+**Parameters:**
 
 <table class="confluenceTable"><tbody><tr><th class="confluenceTh">Name</th><th colspan="1" class="confluenceTh">Type</th><th class="confluenceTh">Description</th><th colspan="1" class="confluenceTh">Mandatory</th><th colspan="1" class="confluenceTh">Cardinality</th><th class="confluenceTh">Example</th></tr><tr><td colspan="1" class="confluenceTd">seq</td><td colspan="1" class="confluenceTd">Integer</td><td colspan="1" class="confluenceTd">Sequence from last received message. No present if this is the first call</td><td colspan="1" class="confluenceTd">No</td><td colspan="1" class="confluenceTd">1</td><td colspan="1" class="confluenceTd">/api/chat?seq=3</td></tr></tbody></table>
 
-* *Response:*
+**Response:**
 
     * Response when there are new messages:
 
@@ -54,15 +54,16 @@ This the main resource of the chat server.
     ```
 
 
- * *Errors:* 
+ **Errors:** 
 
 <table class="confluenceTable"><tbody><tr><th class="confluenceTh">Status Code</th><th class="confluenceTh">Body</th><th class="confluenceTh">Description</th></tr><tr><td colspan="1" class="confluenceTd">400</td><td colspan="1" class="confluenceTd"><table class="wysiwyg-macro" data-macro-name="code" style="background-image: url(/confluence/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGV9&amp;locale=en_GB&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>{"message":"invalid seq parameter"}</pre></td></tr></table></td><td colspan="1" class="confluenceTd">When the seq parameter is invalid (e.g. an string)</td></tr></tbody></table>
 
 #### Send chat messages ####
 
-* *Method:* POST
+**Method:** POST
 
-* *Body:* 
+**Body:**
+
 ```json
 {
     "nick":"user1",
@@ -70,6 +71,6 @@ This the main resource of the chat server.
 }
 ```
 
-* *Errors:*
+**Errors:**
 
 <table class="confluenceTable"><tbody><tr><th class="confluenceTh">Status Code</th><th class="confluenceTh">Body</th><th class="confluenceTh">Description</th></tr><tr><td colspan="1" class="confluenceTd">400</td><td colspan="1" class="confluenceTd"><table class="wysiwyg-macro" data-macro-name="code" style="background-image: url(/confluence/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGV9&amp;locale=en_GB&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>{"message":"invalid body"}</pre></td></tr></table></td><td colspan="1" class="confluenceTd">When no body or invalid JSON is sent</td></tr><tr><td colspan="1" class="confluenceTd">400</td><td colspan="1" class="confluenceTd"><table class="wysiwyg-macro" data-macro-name="code" style="background-image: url(/confluence/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGV9&amp;locale=en_GB&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>{"message":"missing nick parameter"}</pre></td></tr></table></td><td colspan="1" class="confluenceTd">When the user nick is missing in the body</td></tr><tr><td colspan="1" class="confluenceTd">400</td><td colspan="1" class="confluenceTd"><table class="wysiwyg-macro" data-macro-name="code" style="background-image: url(/confluence/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGV9&amp;locale=en_GB&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>{"message":"missing message parameter"}</pre></td></tr></table></td><td colspan="1" class="confluenceTd">When the message is missing in the body</td></tr></tbody></table>
