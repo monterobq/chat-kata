@@ -7,9 +7,10 @@ PART I - Make a simple REST service
 ------------------------------------
 
 1. Read about grails unit testing [here][1] and check the provided ChatControllerTest unit test (in test/unit/chat/kata).
-2. Run the unit test within your IDE, it should fail.
-     
-   - You can also run it from the command line:  `grails test-app`
+
+2. Run the unit test within your IDE. *It will should fail since we have not implemented this behaviour yet.*
+
+> You can also run it from the command line:  `grails test-app`
 
 3. Now let's go and implement the list method in the ChatController (grails-app/controller/chat/kata) to make the test past, use this with the body which returns an statically defined json
 
@@ -49,13 +50,13 @@ PART I - Make a simple REST service
 
 7. Run the unit test again and check that now it passes
 
-7. Run the server locally ``grails run-app``
+8. Run the server locally ``grails run-app``
 
-8. When grails finish bootstrapping the test server, you should see this message:
+9. When grails finish bootstrapping the test server, you should see this message:
 
-> | Server running. Browse to http://localhost:8080/chat-kata
+> Server running. Browse to http://localhost:8080/chat-kata
 
-Now open the URL http://localhost:8080/chat-kata/api/chat in your browser to test the response
+10. Now open the URL http://localhost:8080/chat-kata/api/chat in your browser to test the response
 
 
 
