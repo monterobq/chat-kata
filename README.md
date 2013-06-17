@@ -36,16 +36,22 @@ This the main resource of the chat server.
 
 	* Response when there are new messages:
 
-	<table class="wysiwyg-macro" data-macro-name="code" data-macro-parameters="language=javascript|title=/api/chat?seq\=4" style="background-image: url(/confluence/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGU6dGl0bGU9L2FwaS9jaGF0P3NlcT00fGxhbmd1YWdlPWphdmFzY3JpcHR9&amp;locale=en_GB&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>{
-    "messages": [ {"nick":"user1", "message":"hi there"},
+	```json
+	{
+    	"messages": [ {"nick":"user1", "message":"hi there"},
                   {"nick":"user2", "message":"hola"} ],
-    "last_seq": 6}</pre></td></tr></table>
+    	"last_seq": 6
+    }
+    ````
 
 	* Response when there are no new messages:
 
-	<table class="wysiwyg-macro" data-macro-name="code" data-macro-parameters="language=javascript|title=/api/chat?seq\=6" style="background-image: url(/confluence/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGU6dGl0bGU9L2FwaS9jaGF0P3NlcT02fGxhbmd1YWdlPWphdmFzY3JpcHR9&amp;locale=en_GB&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>{
-    "messages": [],
-    "last_seq": 6}</pre></td></tr></table>
+	```json
+	{
+    	"messages": [],
+    	"last_seq": 6
+    }
+    ```
 
  * *Errors:* 
 <table class="confluenceTable"><tbody><tr><th class="confluenceTh">Status Code</th><th class="confluenceTh">Body</th><th class="confluenceTh">Description</th></tr><tr><td colspan="1" class="confluenceTd">400</td><td colspan="1" class="confluenceTd"><table class="wysiwyg-macro" data-macro-name="code" style="background-image: url(/confluence/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGV9&amp;locale=en_GB&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>{"message":"invalid seq parameter"}</pre></td></tr></table></td><td colspan="1" class="confluenceTd">When the seq parameter is invalid (e.g. an string)</td></tr></tbody></table>
