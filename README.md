@@ -21,13 +21,14 @@ PART I - Make a simple REST service
 	    }
 	    render(contentType: "text/json") {
 	        messages = [{
-	        nick = "user1"
-	        message = "hello"
-	    },{
-	        nick = "user2"
-	        message = "hola"
-	    }]
-	    last_seq = 1
+	        	nick = "user1"
+	        	message = "hello"
+	    	},{
+	        	nick = "user2"
+	        	message = "hola"
+	    	}]
+	    	last_seq = 1
+	    }
 	```
 
 	> Note how we use a JSON builder with the render function . Read this [documentation][2]  
@@ -56,7 +57,7 @@ PART I - Make a simple REST service
 
 	> Server running. Browse to http://localhost:8080/chat-kata
 
-10. Now open the URL http://localhost:8080/chat-kata/api/chat in your browser to test the response
+10. Now open the URL [http://localhost:8080/chat-kata/api/chat](http://localhost:8080/chat-kata/api/chat) in your browser to test the response
 
 
 
