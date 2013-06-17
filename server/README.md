@@ -186,6 +186,82 @@ $ curl http://localhost:8080/chat-kata/api/chat?seq=0
 {"messages":[{"nick":"alex","message":"ciao"}],"last_seq":1}
 ```
 
+PART IV - Handle API errors
+
+1. Add the following test method to the *ChatControllerTest* unit test
+
+```grovvy
+	void testInvalidSeq(){
+		params.seq = 'invalid'
+		controller.list()
+		assert response.status == 400
+		assert response.text == '{"error":"Invalid seq parameter"}'
+	}
+```
+
+2. Run the test. It should fail if you have not added any error handling yet to your controller.
+
+3. Read about Grails automatic validation [here][8] and implement the error handling logic in *ChatController.list* to handle invalid seq parameter (i.e. not a number)
+
+> *Tip:* in the controller you have the method `hasErrors()` and the field `errors` that capture the data binding errors at the controller level.
+
+4. Run the unit test until it pass it
+
+5. Add the following test method to the *ChatControllerTest* unit test
+
+```groovy
+	void testSendWithInvalidJson(){
+		request.content = "not a json"
+		controller.send()
+		assert response.status == 400
+		assert response.text == '{"error":"Invalid body"}'
+	}
+```
+
+6. Implement the logic in the *ChatController.send* method to hadle the invalid JSON error. Use the unit test to validate your implementation.
+
+> *Tip:* You can check if `request.JSON` exists
+
+7. Add the following test methods to the *ChatControllerTest* unit test
+
+```groovy
+	void testSendWithMissingNick(){
+		request.content = '{"message":"hi"}'
+		controller.send()
+		assert response.status == 400
+		assert response.text == '{"error":"Missing nick parameter"}'
+	}
+	
+	
+	void testSendWithMissingMessage(){
+		request.content = '{"nick":"bob"}'
+		controller.send()
+		assert response.status == 400
+		assert response.text == '{"error":"Missing message parameter"}'
+	}
+```
+
+8. Using contraints (refer to this [doc][8]), implement the logic to validate the *ChatMessage* object created on the *send* method of the controller
+
+> *Tip:* You want to call the `validate()` method on the *ChatMessage* instance
+
+9. Run the server locally ``grails run-app``
+
+10. Test the error handling by calling the API
+
+```
+$ curl http://localhost:8080/chat-kata/api/chat?seq=invalid
+{"error":"Invalid seq parameter"}%
+
+$ curl http://localhost:8080/chat-kata/api/chat --data '{"nick":"alex"}' --header "Content-Type: text/json; charset=UTF-8" -X POST
+{"error":"Missing message parameter"}
+
+$ curl http://localhost:8080/chat-kata/api/chat --data '{"message":"jsut message"}' --header "Content-Type: text/json; charset=UTF-8" -X POST
+{"error":"Missing nick parameter"}
+
+$ curl http://localhost:8080/chat-kata/api/chat --data 'blah blah blah' --header "Content-Type: text/json; charset=UTF-8" -X POST
+{"error":"Invalid body"}
+```
 
 
 [1]: http://grails.org/doc/2.2.1/guide/testing.html "Grails Unit Testing"
@@ -195,3 +271,4 @@ $ curl http://localhost:8080/chat-kata/api/chat?seq=0
 [5]: http://grails.org/doc/2.2.1/guide/testing.html#mockingCollaborators "Grails mocking collaborations"
 [6]: http://groovy.codehaus.org/Using+MockFor+and+StubFor "Using MockFor and StubFor"
 [7]: http://www.kelvin-williams.dk/?p=53 "Using Mock Annotation and mockFor in Grails Unit Tests"
+[8]: http://grails.org/doc/latest/guide/validation.html "Grails validation"

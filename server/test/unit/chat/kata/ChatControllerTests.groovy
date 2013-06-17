@@ -9,6 +9,10 @@ import org.junit.*
 @TestFor(ChatController)
 class ChatControllerTests {
 
+	void setUp() {
+		mockForConstraintsTests(ChatMessage)
+	}
+	
     void testListAll() {
        controller.list()
 	   assert response.text == '{"messages":[{"nick":"user1","message":"hello"},{"nick":"user2","message":"hola"}],"last_seq":1}'
