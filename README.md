@@ -22,7 +22,7 @@ The following are the definition of the API resources.
 
 This the main resource of the chat server.
 
-*Endpoint:* ```/api/chat```
+##### Endpoint ##### ```/api/chat```
 
 #### Get chat messages ####
 
