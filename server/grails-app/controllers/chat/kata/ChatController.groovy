@@ -8,7 +8,7 @@ class ChatController {
 		//TODO: implement me
 	}
 
-	def send(SendChatMessageCommand command){
+	def send(){
 		//TODO: implement me
 	}
 }
