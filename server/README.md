@@ -187,6 +187,7 @@ $ curl http://localhost:8080/chat-kata/api/chat?seq=0
 ```
 
 PART IV - Handle API errors
+----------------------------
 
 1. Add the following test method to the *ChatControllerTest* unit test
 
