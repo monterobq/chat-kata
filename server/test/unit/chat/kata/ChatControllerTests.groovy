@@ -9,7 +9,8 @@ import org.junit.*
 @TestFor(ChatController)
 class ChatControllerTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testListAll() {
+       controller.list()
+	   assert response.text == '{"messages":[{"nick":"user1","message":"hello"},{"nick":"user2","message":"hola"}],"last_seq":1}'
     }
 }
