@@ -3,8 +3,6 @@
 
     <string name="app_name">SimpleChat</string>
     <string name="config">Configure</string>
-    <string name="title_activity_config">ConfigActivity</string>
-    <string name="title_activity_chat">ChatActivity</string>
     <string name="login">Log In</string>
     <string name="nickname">Nick</string>
     <string name="send">Send</string>

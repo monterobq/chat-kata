@@ -7,6 +7,7 @@ import org.ejmc.android.simplechat.net.NetConfig;
 import org.ejmc.android.simplechat.net.NetRequests;
 import org.ejmc.android.simplechat.net.NetResponseHandler;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -226,6 +227,7 @@ public class ChatActivity extends Activity {
 	 */
 	private void setupActionBar() {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().hide() ;
 	}
 
 	private void updateScroll() {
