@@ -10,6 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ * Main activity.
+ * 
+ * Shows login config.
+ * 
+ * @author startic
+ *
+ */
 public class LoginActivity extends Activity {
 
 	@Override
@@ -26,7 +34,7 @@ public class LoginActivity extends Activity {
 				Context.MODE_PRIVATE);
 
 		
-		
+		// Checks configuration
 		String host = prefs.getString(Magic.P_HOST, "").trim();
 
 		// Check server config.
@@ -51,6 +59,12 @@ public class LoginActivity extends Activity {
 		return true;
 	}
 
+	/**
+	 * Login button action. 
+	 * 
+	 * Go to chat activity if the nickname is not empty.
+	 * @param view
+	 */
 	public void doLogin(View view) {
 
 		EditText nick = (EditText) findViewById(R.id.nick);

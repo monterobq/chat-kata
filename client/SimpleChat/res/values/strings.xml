@@ -10,5 +10,7 @@
     <string name="send">Send</string>
     <string name="server">Server</string>
     <string name="port">Port</string>
+    <string name="netError">Hubo un error al acceder a la red</string>
+    <string name="requestError">Hubo un error en servidor :</string>
 
 </resources>

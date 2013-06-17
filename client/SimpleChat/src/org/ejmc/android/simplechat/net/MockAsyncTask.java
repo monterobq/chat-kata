@@ -29,7 +29,7 @@ public class MockAsyncTask<Response> extends
 	};
 
 	/**
-	 * Notifies succes to UI with parameter value.
+	 * Notifies success to UI with parameter value.
 	 */
 	protected void onPostExecute(Response result) {
 		if (handler != null) {

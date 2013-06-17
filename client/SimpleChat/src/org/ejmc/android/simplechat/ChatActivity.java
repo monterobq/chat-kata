@@ -2,6 +2,7 @@ package org.ejmc.android.simplechat;
 
 import org.ejmc.android.simplechat.model.ChatList;
 import org.ejmc.android.simplechat.model.Message;
+import org.ejmc.android.simplechat.model.RequestError;
 import org.ejmc.android.simplechat.net.NetConfig;
 import org.ejmc.android.simplechat.net.NetRequests;
 import org.ejmc.android.simplechat.net.NetResponseHandler;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Chat activity.
@@ -27,9 +29,34 @@ import android.widget.TextView;
 public class ChatActivity extends Activity {
 
 	/**
-	 * Gets chat from server
+	 * Base NetResponse handler (handles errors).
+	 * 
+	 * @param <Response>
 	 */
-	private class GetChatHandler extends NetResponseHandler<ChatList> {
+	private class BaseHandler<Response> extends NetResponseHandler<Response> {
+
+		@Override
+		public void onNetError() {
+			// Print generic error
+			Toast.makeText(ChatActivity.this, R.string.netError,
+					Toast.LENGTH_LONG).show();
+		}
+
+		@Override
+		public void onRequestError(RequestError error) {
+
+			// Print server message
+			String pref = getResources().getString(R.string.requestError,
+					error.getMessage());
+			Toast.makeText(ChatActivity.this, pref, Toast.LENGTH_LONG).show();
+
+		}
+	}
+
+	/**
+	 * Gets chat from server.
+	 */
+	private class GetChatHandler extends BaseHandler<ChatList> {
 
 		@Override
 		public void onSuccess(ChatList result) {
@@ -46,6 +73,7 @@ public class ChatActivity extends Activity {
 			lastSeq = result.getLastSeq();
 
 			if (added) {
+				// Update scroll if changed
 				updateScroll();
 			}
 
@@ -58,9 +86,11 @@ public class ChatActivity extends Activity {
 	 * Send message to server and paint it on return ;
 	 * 
 	 */
-	private class PostChatHandler extends NetResponseHandler<Message> {
+	private class PostChatHandler extends BaseHandler<Message> {
 		@Override
 		public void onSuccess(Message result) {
+
+			// Add message on successful POST
 			tv.append(result.getNick() + ": " + result.getMessage() + "\n");
 			updateScroll();
 		}
@@ -142,6 +172,13 @@ public class ChatActivity extends Activity {
 		started = false;
 	}
 
+	/**
+	 * Schedules a chat refresh.
+	 * 
+	 * If parameter now is true, a request is immediately sent.
+	 * 
+	 * @param now
+	 */
 	private void scheduleRefresh(boolean now) {
 		if (started) {
 
@@ -162,6 +199,11 @@ public class ChatActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Sends message to server.
+	 * 
+	 * @param view
+	 */
 	public void sendMessage(View view) {
 
 		// Obtain message
@@ -187,7 +229,7 @@ public class ChatActivity extends Activity {
 	}
 
 	private void updateScroll() {
-		// Run scroll after text additions
+		// Run scroll after text additions (on UI thread)
 		scroller.post(new Runnable() {
 			@Override
 			public void run() {

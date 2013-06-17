@@ -10,6 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ * Activity for app configuration.
+ * 
+ * @author startic
+ * 
+ */
 public class ConfigActivity extends Activity {
 
 	@Override
@@ -24,6 +30,7 @@ public class ConfigActivity extends Activity {
 	protected void onStart() {
 		super.onStart();
 
+		// Load values
 		SharedPreferences prefs = getSharedPreferences(Magic.PREFERENCES,
 				Context.MODE_PRIVATE);
 
@@ -41,20 +48,24 @@ public class ConfigActivity extends Activity {
 	 * Set up the {@link android.app.ActionBar}.
 	 */
 	private void setupActionBar() {
-
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-
 	}
 
+	/**
+	 * Configuration button action.
+	 * 
+	 * Saves the configuration.
+	 * 
+	 * @param view
+	 */
 	public void doConfig(View view) {
 
 		boolean ok = false;
-		
+
 		SharedPreferences prefs = getSharedPreferences(Magic.PREFERENCES,
 				Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = prefs.edit();
 
-		
 		// Save server
 		EditText server = (EditText) findViewById(R.id.server);
 		String servername = server.getText().toString().trim();

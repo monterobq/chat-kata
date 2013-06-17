@@ -1,15 +1,25 @@
 package org.ejmc.android.simplechat.model;
 
-public class Message {
-	
-	private String nick ;
+import com.google.gson.annotations.SerializedName;
 
-	private String message ;
+/**
+ * Simple message.
+ * 
+ * @author startic
+ * 
+ */
+public class Message {
+
+	@SerializedName("nick")
+	private String nick;
+
+	@SerializedName("message")
+	private String message;
 
 	public Message() {
 		super();
 	}
-	
+
 	public Message(String nick, String message) {
 		super();
 		this.nick = nick;
@@ -31,6 +41,5 @@ public class Message {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
-	
-	
+
 }

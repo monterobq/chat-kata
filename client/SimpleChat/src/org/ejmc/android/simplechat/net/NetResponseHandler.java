@@ -5,6 +5,8 @@ import org.ejmc.android.simplechat.model.RequestError;
 /**
  * Empty response handler.
  * 
+ * Base class for Net Response handlers.
+ * 
  * @author startic
  * 
  * @param <Response>

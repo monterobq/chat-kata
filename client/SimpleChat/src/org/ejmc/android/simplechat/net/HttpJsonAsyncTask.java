@@ -13,9 +13,13 @@ import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 
 /**
  * Async task for JSON REST requests.
+ * 
+ * Requests MUST {@link AsyncTask} because response SHOULD be handled in a UI
+ * thread.
  * 
  * @author startic
  * 
@@ -42,6 +46,9 @@ public class HttpJsonAsyncTask<Response> extends
 		this.returnClass = returnClass;
 	}
 
+	/**
+	 * Handle request to server in a generic manner.
+	 */
 	@Override
 	protected String doInBackground(HttpRequest... params) {
 
@@ -50,12 +57,11 @@ public class HttpJsonAsyncTask<Response> extends
 
 		try {
 
+			// Send remote request
 			HttpResponse resp = client.execute(netConfig.getHost(), params[0],
 					netConfig.getContext());
 
 			returnCode = resp.getStatusLine().getStatusCode();
-			// Read json
-			// TODO Check Content type
 			return readJson(resp);
 
 		} catch (IOException e) {
@@ -68,24 +74,33 @@ public class HttpJsonAsyncTask<Response> extends
 
 	@Override
 	protected void onPostExecute(String result) {
-		
+
 		if (result == null) {
 			handler.onNetError();
 		}
 
 		Gson gson = netConfig.getGson();
-		if (returnCode == 200) {
-			Response resp = gson.fromJson(result, returnClass);
-			handler.onSuccess(resp);
-		} else if (returnCode == 400) {
-			RequestError error = gson.fromJson(result, RequestError.class);
-			handler.onRequestError(error);
-		} else {
-			handler.onNetError();
+		try {
+			if (returnCode == 200) {
+				Response resp = gson.fromJson(result, returnClass);
+				handler.onSuccess(resp);
+			} else if (returnCode == 400) {
+				RequestError error = gson.fromJson(result, RequestError.class);
+				handler.onRequestError(error);
+			} else {
+				handler.onNetError();
+			}
+		} catch (JsonParseException ex) {
+			RequestError err = new RequestError();
+			err.setMessage("Response is not a valid JSON");
+			handler.onRequestError(err);
 		}
 
 	}
 
+	/**
+	 * Reads JSON response to String.
+	 */
 	private String readJson(HttpResponse resp) {
 		HttpEntity e = resp.getEntity();
 		InputStreamReader reader = null;
@@ -96,7 +111,7 @@ public class HttpJsonAsyncTask<Response> extends
 
 			char[] buff = new char[32768];
 			int leidos;
-			while ((leidos = reader.read()) != -1) {
+			while ((leidos = reader.read(buff)) != -1) {
 				writer.write(buff, 0, leidos);
 			}
 			writer.flush();
