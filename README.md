@@ -34,7 +34,7 @@ This the main resource of the chat server.
 
 * *Response:*
 
-	* Response when there are new messages:
+    * Response when there are new messages:
 
 	```json
 	{
@@ -44,7 +44,7 @@ This the main resource of the chat server.
     }
     ````
 
-	* Response when there are no new messages:
+    * Response when there are no new messages:
 
 	```json
 	{
@@ -52,6 +52,7 @@ This the main resource of the chat server.
     	"last_seq": 6
     }
     ```
+
 
  * *Errors:* 
 
