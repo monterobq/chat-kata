@@ -281,6 +281,9 @@ PARTE V - Deploy to an application server
 
 6. You should have your application running on [http://localhost:8080/chat-kata]
 
+
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+
 [1]: http://grails.org/doc/2.2.1/guide/testing.html "Grails Unit Testing"
 [2]: http://grails.org/doc/2.2.1/ref/Controllers/render.html "Grails reder user guide"
 [3]: http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/locks/ReentrantReadWriteLock.html "ReentrantReadWriteLock"
