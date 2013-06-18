@@ -265,6 +265,7 @@ $ curl http://localhost:8080/chat-kata/api/chat --data 'blah blah blah' --header
 ```
 
 PARTE V - Deploy to an application server
+------------------------------------------
 
 1. Install Tomcat 7 in your local machine following the instrunctions from [here][9]
 
