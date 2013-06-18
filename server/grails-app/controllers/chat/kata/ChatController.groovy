@@ -1,7 +1,5 @@
 package chat.kata
 
-import chat.kata.command.SendChatMessageCommand;
-
 class ChatController {
 
 	def list(Integer seq) {
