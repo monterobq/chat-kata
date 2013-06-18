@@ -76,7 +76,7 @@ Unfortunately, current documentation refers to JUnit 4. You can find some doc. a
 
 
 
-[1]: http://jira.mundoreader.com/confluence/display/Orpheus/CR+Kick-off+-+Training "KATA API"
+[1]: https://github.com/bqreaders/chat-kata/ "KATA API"
 [2]: http://junit.sourceforge.net/junit3.8.1/ "JUnit 3"
 [3]: http://developer.android.com/tools/testing/testing_android.html "Android Testing Fundamentals"
 [4]: http://junit.sourceforge.net/doc/cookstour/cookstour.htm
