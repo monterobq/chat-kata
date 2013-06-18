@@ -76,7 +76,11 @@ Unfortunately, current documentation refers to JUnit 4. You can find some doc. a
 
 
 
+<<<<<<< HEAD
 [1]: https://github.com/bqreaders/chat-kata#api-contract "KATA API"
+=======
+[1]: https://github.com/bqreaders/chat-kata/ "KATA API"
+>>>>>>> fe2e85680fbfefa031c678432372205b619697b2
 [2]: http://junit.sourceforge.net/junit3.8.1/ "JUnit 3"
 [3]: http://developer.android.com/tools/testing/testing_android.html "Android Testing Fundamentals"
 [4]: http://junit.sourceforge.net/doc/cookstour/cookstour.htm
