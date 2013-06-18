@@ -1,16 +1,21 @@
 package org.ejmc.android.simplechat.net;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIUtils;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.ejmc.android.simplechat.Magic;
 import org.ejmc.android.simplechat.model.ChatList;
 import org.ejmc.android.simplechat.model.Message;
+
+import android.net.Uri;
+import android.net.Uri.Builder;
 
 /**
  * Proxy to remote API.
@@ -35,12 +40,13 @@ public class NetRequests {
 	 */
 	public void chatGET(int seq, NetResponseHandler<ChatList> handler) {
 
-		HttpParams params = new BasicHttpParams();
-		if (seq > 0) {
-			params.setIntParameter("seq", seq);
+		// There is a better way to do it, but this will suffice
+		String uri = "/chat-kata/api/chat" ;
+		if (seq >= 0) {
+			uri += "?seq=" + seq ;
 		}
-		HttpGet get = new HttpGet("/api/chat");
-
+		HttpGet get = new HttpGet(uri);
+		
 		new HttpJsonAsyncTask<ChatList>(netConfig, handler, ChatList.class)
 				.execute(get);
 	}
@@ -53,11 +59,11 @@ public class NetRequests {
 	 */
 	public void chatPOST(Message message, NetResponseHandler<Message> handler) {
 
-		HttpPost post = new HttpPost("/api/chat");
+		HttpPost post = new HttpPost("/chat-kata/api/chat");
 		HttpEntity entity = createJSONEntity(message);
 		post.setEntity(entity);
 
-		new HttpJsonAsyncTask<Message>(netConfig, handler, Message.class)
+		new HttpJsonAsyncTask<Message>(netConfig, handler, message)
 				.execute(post);
 	}
 
@@ -72,7 +78,7 @@ public class NetRequests {
 			String json = netConfig.getGson().toJson(o);
 
 			StringEntity entity = new StringEntity(json, Magic.DEFAULT_ENCODING);
-
+			entity.setContentEncoding(Magic.DEFAULT_ENCODING);
 			entity.setContentType(Magic.JSON_CONTENT_TYPE);
 
 			return entity;

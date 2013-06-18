@@ -11,6 +11,7 @@ import org.ejmc.android.simplechat.model.RequestError;
 
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
@@ -36,6 +37,16 @@ public class HttpJsonAsyncTask<Response> extends
 	private Class<? extends Response> returnClass;
 
 	private NetResponseHandler<Response> handler;
+
+	private Response overridenResponse;
+
+	public HttpJsonAsyncTask(NetConfig netConfig,
+			NetResponseHandler<Response> handler, Response overridenResponse) {
+		this(netConfig, handler, (Class<? extends Response>) overridenResponse
+				.getClass());
+		this.overridenResponse = overridenResponse;
+
+	}
 
 	public HttpJsonAsyncTask(NetConfig netConfig,
 			NetResponseHandler<Response> handler,
@@ -65,6 +76,7 @@ public class HttpJsonAsyncTask<Response> extends
 			return readJson(resp);
 
 		} catch (IOException e) {
+			Log.d("SimpleChat", "Error invoking remote", e);
 		} finally {
 			client.close();
 		}
@@ -81,9 +93,13 @@ public class HttpJsonAsyncTask<Response> extends
 
 		Gson gson = netConfig.getGson();
 		try {
-			if (returnCode == 200) {
-				Response resp = gson.fromJson(result, returnClass);
-				handler.onSuccess(resp);
+			if (returnCode == 200 || returnCode == 201) {
+				if (overridenResponse == null) {
+					Response resp = gson.fromJson(result, returnClass);
+					handler.onSuccess(resp);
+				} else {
+					handler.onSuccess(overridenResponse);
+				}
 			} else if (returnCode == 400) {
 				RequestError error = gson.fromJson(result, RequestError.class);
 				handler.onRequestError(error);
