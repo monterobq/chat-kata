@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class RequestError {
 
-	@SerializedName("message")
+	@SerializedName("error")
 	private String message;
 
 	public String getMessage() {
