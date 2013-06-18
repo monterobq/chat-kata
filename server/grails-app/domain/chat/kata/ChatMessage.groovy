@@ -2,9 +2,14 @@ package chat.kata
 
 class ChatMessage {
 	
+	static constraints = {
+		nick nullable: false, blank : false
+		message nullable:false, blank : false
+	}
+	
 	String nick
 	String message
-
+	
 	int hash(){
 		return Objects.hash(nick, message)
 	}
