@@ -64,7 +64,8 @@ public class ChatActivity extends Activity {
 			boolean added = false;
 			// Filter my messages
 			for (Message m : result.getMessages()) {
-				if (!nick.equals(m.getNick())) {
+				if (!nick.equals(m.getNick()) || lastSeq < 0) {
+					// We don't want to filter my messages first time
 					added = true;
 					tv.append(m.getNick() + ": " + m.getMessage() + "\n");
 				}
@@ -226,7 +227,7 @@ public class ChatActivity extends Activity {
 	 */
 	private void setupActionBar() {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().hide() ;
+		getActionBar().hide();
 	}
 
 	private void updateScroll() {
