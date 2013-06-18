@@ -264,6 +264,21 @@ $ curl http://localhost:8080/chat-kata/api/chat --data 'blah blah blah' --header
 {"error":"Invalid body"}
 ```
 
+PARTE V - Deploy to an application server
+
+1. Install Tomcat 7 in your local machine following the instrunctions from [here][9]
+
+2. Generate a WAR file of the application ``grails run-app``
+
+> the WAR file will be created on the *target* directory
+
+3. Rename the WAR file to *chat-kata.war*
+
+4. Copy the WAR file to the *webapp* directory located on the directory of your tomcat installation (*CATALINA_HOME*)
+
+5. Start tomcat ``CATALINA_HOME/bin/startup.sh``
+
+6. You should have your application running on [http://localhost:8080/chat-kata]
 
 [1]: http://grails.org/doc/2.2.1/guide/testing.html "Grails Unit Testing"
 [2]: http://grails.org/doc/2.2.1/ref/Controllers/render.html "Grails reder user guide"
@@ -273,3 +288,4 @@ $ curl http://localhost:8080/chat-kata/api/chat --data 'blah blah blah' --header
 [6]: http://groovy.codehaus.org/Using+MockFor+and+StubFor "Using MockFor and StubFor"
 [7]: http://www.kelvin-williams.dk/?p=53 "Using Mock Annotation and mockFor in Grails Unit Tests"
 [8]: http://grails.org/doc/latest/guide/validation.html "Grails validation"
+[9]: http://tomcat.apache.org/ "Apache Tomcat"
