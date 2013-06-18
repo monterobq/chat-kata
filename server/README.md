@@ -191,7 +191,7 @@ PART IV - Handle API errors
 
 1. Add the following test method to the *ChatControllerTest* unit test
 
-```grovvy
+```groovy
 	void testInvalidSeq(){
 		params.seq = 'invalid'
 		controller.list()
