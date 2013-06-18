@@ -18,6 +18,10 @@ public class Magic {
 
 	public static final String DEFAULT_ENCODING = "UTF-8";
 
+	public static final String DEFAULT_SERVER_HOST = "localhost";
+
+	public static final int DEFAULT_SERVER_PORT = 8080;
+
 	private Magic() {
 
 	}

@@ -64,7 +64,8 @@ public class ChatActivity extends Activity {
 			boolean added = false;
 			// Filter my messages
 			for (Message m : result.getMessages()) {
-				if (!nick.equals(m.getNick())) {
+				if (!nick.equals(m.getNick()) || lastSeq < 0) {
+					// We don't want to filter my messages first time
 					added = true;
 					tv.append(m.getNick() + ": " + m.getMessage() + "\n");
 				}
@@ -136,8 +137,8 @@ public class ChatActivity extends Activity {
 		nick = prefs.getString(Magic.P_NICK, "!undef!");
 
 		// Configure network
-		String host = prefs.getString(Magic.P_HOST, "localhost");
-		int port = prefs.getInt(Magic.P_PORT, 80);
+		String host = prefs.getString(Magic.P_HOST, Magic.DEFAULT_SERVER_HOST);
+		int port = prefs.getInt(Magic.P_PORT, Magic.DEFAULT_SERVER_PORT);
 		NetConfig netConfig = new NetConfig(host, port);
 		netRequests = new NetRequests(netConfig);
 	}
@@ -226,7 +227,7 @@ public class ChatActivity extends Activity {
 	 */
 	private void setupActionBar() {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().hide() ;
+		getActionBar().hide();
 	}
 
 	private void updateScroll() {
