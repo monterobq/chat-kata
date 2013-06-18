@@ -1,5 +1,7 @@
 package chat.kata
 
+import com.google.common.base.Objects
+
 class ChatMessage {
 	
 	static constraints = {
@@ -10,15 +12,15 @@ class ChatMessage {
 	String nick
 	String message
 	
-	int hash(){
-		return Objects.hash(nick, message)
+	int hashCode(){
+		return Objects.hashCode(nick, message)
 	}
 	
 	boolean equals(obj){
 		if(obj == null || !(obj instanceof ChatMessage)){
 			return false
 		}
-		return Objects.equals(this.nick, obj.nick) && Objects.equals(this.message, obj.message)
+		return Objects.equal(this.nick, obj.nick) && Objects.equal(this.message, obj.message)
 	}
 	
 	String toString(){
