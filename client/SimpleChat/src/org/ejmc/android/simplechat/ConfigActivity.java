@@ -39,7 +39,7 @@ public class ConfigActivity extends Activity {
 		server.setText(servername);
 
 		EditText port = (EditText) findViewById(R.id.port);
-		int portNumber = prefs.getInt(Magic.P_PORT, 80);
+		int portNumber = prefs.getInt(Magic.P_PORT, Magic.DEFAULT_SERVER_PORT);
 		port.setText(Integer.toString(portNumber));
 
 	}
