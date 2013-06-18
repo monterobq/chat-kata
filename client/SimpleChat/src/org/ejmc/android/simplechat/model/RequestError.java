@@ -1,6 +1,5 @@
 package org.ejmc.android.simplechat.model;
 
-import com.google.gson.annotations.SerializedName;
 
 /**
  * Server request error.
@@ -10,14 +9,5 @@ import com.google.gson.annotations.SerializedName;
  */
 public class RequestError {
 
-	@SerializedName("message")
-	private String message;
 
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
 }
