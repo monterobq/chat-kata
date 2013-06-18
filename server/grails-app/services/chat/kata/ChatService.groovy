@@ -7,7 +7,7 @@ class ChatService {
 
 	private final List<ChatMessage> messages = new ArrayList()
 	private final ReadWriteLock lock = new ReentrantReadWriteLock()
-	
+
 	/**
 	 * Collects chat messages in the provided collection
 	 *
@@ -18,13 +18,16 @@ class ChatService {
 	 */
 	Integer collectChatMessages(Collection<ChatMessage> collector, Integer fromSeq = null){
 		lock.readLock().lock()
-		def last = messages.size()
-		def first = fromSeq == null? 0 :  fromSeq+1
-		collector.addAll(messages.subList(first, last))
-		lock.readLock().unlock()
-		return last-1
+		try{
+			def last = messages.size()
+			def first = fromSeq == null? 0 :  fromSeq+1
+			collector.addAll(messages.subList(first, last))
+			return last-1
+		}finally{
+			lock.readLock().unlock()
+		}
 	}
-	
+
 	/**
 	 * Puts a new message at the bottom of the chat
 	 *
@@ -32,9 +35,10 @@ class ChatService {
 	 */
 	void putChatMessage(ChatMessage message){
 		lock.writeLock().lock()
-		messages.add(message)
-		lock.writeLock().unlock()
+		try{
+			messages.add(message)
+		}finally{
+			lock.writeLock().unlock()
+		}
 	}
-	
-	
 }
