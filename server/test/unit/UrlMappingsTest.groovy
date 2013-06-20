@@ -10,7 +10,7 @@ class UrlMappingsTest {
 
 	@Test
 	public void testChatListURLMapping() {
-		fail "Not implemented yet"	
+		assertRestForwardUrlMapping("GET", "/api/chat", controller:"chat", action:"list")
 	}
 
 	/* ------------------- helper methods -- */

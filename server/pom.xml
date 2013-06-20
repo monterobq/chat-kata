@@ -37,9 +37,6 @@
             <version>${grails.version}</version>
             <scope>test</scope>
         </dependency>
-
-        
-
         <dependency>
             <groupId>org.grails.plugins</groupId>
             <artifactId>tomcat</artifactId>
@@ -47,7 +44,6 @@
             <scope>provided</scope>
             <type>zip</type>
         </dependency>
-        
     <dependency>
         <groupId>org.grails.plugins</groupId>
         <artifactId>cache</artifactId>
@@ -109,6 +105,7 @@
     	<version>14.0</version>
     	<classifier>site</classifier>
     </dependency>
+    
     </dependencies>
 
     <build>

@@ -19,6 +19,4 @@ class ChatMessage {
 	String toString(){
 		return nick+":"+message
 	}
-	
-	
 }
