@@ -6,8 +6,8 @@ class ChatController {
 
 	def list(Integer seq) {
 		if(hasErrors()){
-			log.error("Invalid seq: ${errors.getFieldError('seq').rejectedValue}")
-			//TODO: send error about invalid seq
+			render(status: 400, contentType: "text/json") { error = "Invalid seq parameter" }
+			return
 		}
 		final List chatMessages = []
 		final int nextMessage = chatService.collectChatMessages(chatMessages, seq)
@@ -21,8 +21,23 @@ class ChatController {
 	}
 
 	def send(){
+		if(!request.JSON){
+			render(status: 400, contentType: "text/json") { error = "Invalid body" }
+			return
+		}
 		def message = new ChatMessage(request.JSON)
-		chatService.putChatMessage(message)
-		render(status:201)
+		if(message.validate()) {
+			chatService.putChatMessage(message)
+			render(status:201)
+		} else {
+			render(status: 400, contentType: "text/json"){
+				if (message.errors.hasFieldErrors("nick")) {
+					error = "Missing nick parameter"
+				}	
+				if (message.errors.hasFieldErrors("message")) {
+					error = "Missing message parameter"
+				}
+			}
+		}
 	}
 }
