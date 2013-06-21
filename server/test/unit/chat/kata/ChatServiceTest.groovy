@@ -18,13 +18,13 @@ class ChatServiceTest {
 		
 		//Retrieve all messages from the chat
 		List<ChatMessage> messages = new ArrayList()
-		def lastSeq = service.collectChatMessages(messages)
+		def nextMessage = service.collectChatMessages(messages)
 		
 		//Assert correct response
 		assert messages.size() == 2
 		assert messages[0] == message1
 		assert messages[1] == message2
-		assert lastSeq == 1
+		assert nextMessage == 2
 		
 	}
 	
@@ -36,10 +36,10 @@ class ChatServiceTest {
 		service.putChatMessage(message2)
 		
 		// Collect those messages
-		def lastSeq = service.collectChatMessages([])
+		def nextMessage = service.collectChatMessages([])
 		
 		//Now the last seq should be 1
-		assert lastSeq == 1
+		assert nextMessage == 2
 		
 		// Let's put more messages
 		def message3 = new ChatMessage([nick:"user1", message: "bye"])
@@ -48,13 +48,13 @@ class ChatServiceTest {
 		service.putChatMessage(message4)
 		
 		List<ChatMessage> messages = new ArrayList()
-		lastSeq = service.collectChatMessages(messages, lastSeq)
+		nextMessage = service.collectChatMessages(messages, nextMessage)
 		
 		//Assert correct response
 		assert messages.size() == 2
 		assert messages[0] == message3
 		assert messages[1] == message4
-		assert lastSeq == 3
+		assert nextMessage == 4
 	}
 	
 	
