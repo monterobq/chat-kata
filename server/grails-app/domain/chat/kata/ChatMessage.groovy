@@ -3,8 +3,8 @@ package chat.kata
 class ChatMessage {
 
 	static constraints = {
-		nick nullable: false, blank : false
-		message nullable:false, blank : false
+		nick nullable : false, blank : false
+		message nullable :false, blank : false
 	}
 
 	String nick
