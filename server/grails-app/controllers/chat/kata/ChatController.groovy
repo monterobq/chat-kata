@@ -2,7 +2,7 @@ package chat.kata
 
 class ChatController {
 
-	private ChatService chatService
+	ChatService chatService
 
 	def list(Integer seq) {
 		if(hasErrors()){
