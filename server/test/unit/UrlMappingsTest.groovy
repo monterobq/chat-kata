@@ -8,12 +8,10 @@ import chat.kata.ChatController;
 @Mock([ChatController])
 class UrlMappingsTest {
 
-	@Test
 	public void testChatListURLMapping() {
 		assertRestForwardUrlMapping("GET", "/api/chat", controller:"chat", action:"list")
 	}
 	
-	@Test
 	public void testChatSendURLMapping() {
 		assertRestForwardUrlMapping("POST", "/api/chat", controller:"chat", action:"send")
 	}
