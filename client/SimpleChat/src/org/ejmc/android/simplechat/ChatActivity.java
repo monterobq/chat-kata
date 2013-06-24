@@ -9,7 +9,7 @@ import android.view.MenuItem;
 /**
  * Chat activity.
  * 
- * @author startic
+ * @author alberto.rubio
  */
 public class ChatActivity extends Activity {
 

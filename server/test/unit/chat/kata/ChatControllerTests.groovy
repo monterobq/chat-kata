@@ -13,7 +13,7 @@ class ChatControllerTests {
 	void testListAll() {
 		// create a mock definition with a stub for the collectChatMessages method
 		def mockService = mockFor(ChatService)
-		mockService.demand.collectChatMessages { List collector, Integer seq ->
+		mockService.demand.collectChatMessages(1) { List collector, Integer seq ->
 			collector.addAll([
 				new ChatMessage([nick:"user3",message:"hello"]),
 				new ChatMessage([nick:"user4",message:"hola"])
@@ -31,7 +31,7 @@ class ChatControllerTests {
 	void testListFromLastSequence() {
 		// create a mock definition with a stub for the collectChatMessages method
 		def mockService = mockFor(ChatService)
-		mockService.demand.collectChatMessages { List collector, Integer seq ->
+		mockService.demand.collectChatMessages(1) { List collector, Integer seq ->
 			collector.add(new ChatMessage([nick:"user3",message:"bye"]))
 			return seq + 1
 		}
