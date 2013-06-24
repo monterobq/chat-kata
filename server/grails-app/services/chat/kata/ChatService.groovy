@@ -21,7 +21,9 @@ class ChatService {
 		lock.readLock().lock()
 		try {
 			int firstMessage = fromSeq != null ? fromSeq : 0;
-			collector.addAll(messages.subList(firstMessage, messages.size()))
+			if(firstMessage < messages.size()) {
+				collector.addAll(messages.subList(firstMessage, messages.size()))
+			}
 			return messages.size()
 		} finally {
 			lock.readLock().unlock()
