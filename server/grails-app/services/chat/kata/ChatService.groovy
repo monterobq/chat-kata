@@ -1,8 +1,14 @@
 package chat.kata
 
+import java.util.concurrent.locks.ReadWriteLock
+import java.util.concurrent.locks.ReentrantReadWriteLock
+
 
 class ChatService {
-	
+
+	private final List<ChatMessage> messages = new ArrayList<ChatMessage>()
+	private final ReadWriteLock lock = new ReentrantReadWriteLock()
+
 	/**
 	 * Collects chat messages in the provided collection
 	 * 
@@ -12,17 +18,30 @@ class ChatService {
 	 * @return the sequence of the last message collected.
 	 */
 	Integer collectChatMessages(Collection<ChatMessage> collector, Integer fromSeq = null){
-		//TODO: implement me
+		lock.readLock().lock()
+		try {
+			int firstMessage = fromSeq != null ? fromSeq : 0;
+			if(firstMessage < messages.size()) {
+				collector.addAll(messages.subList(firstMessage, messages.size()))
+			}
+			return messages.size()
+		} finally {
+			lock.readLock().unlock()
+		}
 	}
-	
+
 	/**
 	 * Puts a new message at the bottom of the chat
 	 * 
 	 * @param message the message to add to the chat
 	 */
 	void putChatMessage(ChatMessage message){
-		//TODO: implement me
+		lock.writeLock().lock()
+		try {
+			messages.add(message)
+		} finally {
+			lock.writeLock().unlock()
+		}
 	}
-	
-	
 }
+

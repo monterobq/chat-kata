@@ -7,7 +7,7 @@ import org.ejmc.android.simplechat.model.RequestError;
  * 
  * Base class for Net Response handlers.
  * 
- * @author startic
+ * @author alberto.rubio
  * 
  * @param <Response>
  */

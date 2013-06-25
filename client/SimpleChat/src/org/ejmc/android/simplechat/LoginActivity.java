@@ -9,7 +9,7 @@ import android.view.Menu;
  * 
  * Shows login config.
  * 
- * @author startic
+ * @author alberto.rubio
  * 
  */
 public class LoginActivity extends Activity {

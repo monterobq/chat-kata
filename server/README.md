@@ -269,7 +269,7 @@ PARTE V - Deploy to an application server
 
 1. Install Tomcat 7 in your local machine following the instrunctions from [here][9]
 
-2. Generate a WAR file of the application ``grails run-app``
+2. Generate a WAR file of the application ``grails war``
 
 > the WAR file will be created on the *target* directory
 
