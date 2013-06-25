@@ -1,23 +1,24 @@
 package org.ejmc.android.simplechat;
 
+import org.ejmc.android.simplechat.configuration.DefaultValues;
+
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 
-/**
- * Main activity.
- * 
- * Shows login config.
- * 
- * @author alberto.rubio
- * 
- */
 public class LoginActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+	}
+	
+	@Override
+	protected void onStart() {
+		SharedPreferences preferences = getSharedPreferences(DefaultValues.SHARED_PREFERENCES, MODE_PRIVATE);
+		
 	}
 
 	@Override

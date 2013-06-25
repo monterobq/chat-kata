@@ -3,4 +3,12 @@
 
     <string name="app_name">SimpleChat</string>
 
+    <string name="username">Username</string>
+
+    <string name="address">Address</string>
+
+    <string name="port">Port</string>
+
+    <string name="login">Login</string>
+
 </resources>
