@@ -1,5 +1,4 @@
 
-
 PART II - Make a simple Android client
 ---------------------------------------
 
@@ -78,7 +77,7 @@ Unfortunately, current documentation refers to JUnit 4. You can find some doc. a
 <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
 
 
-[1]: http://jira.mundoreader.com/confluence/display/Orpheus/CR+Kick-off+-+Training "KATA API"
+[1]: https://github.com/bqreaders/chat-kata/ "KATA API"
 [2]: http://junit.sourceforge.net/junit3.8.1/ "JUnit 3"
 [3]: http://developer.android.com/tools/testing/testing_android.html "Android Testing Fundamentals"
 [4]: http://junit.sourceforge.net/doc/cookstour/cookstour.htm
