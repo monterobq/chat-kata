@@ -1,17 +1,19 @@
 package org.ejmc.android.simplechat.net.connection;
 
 import org.apache.http.HttpRequest;
+import org.ejmc.android.simplechat.configuration.Host;
 import org.ejmc.android.simplechat.net.NetResponseHandler;
 
 import android.os.AsyncTask;
 
 public class ApiRestAsyncTask<Response> extends AsyncTask<HttpRequest, Void, String> {
 
-	private ServerConnection connection = new ServerConnection();
+	private ServerConnection connection;
 	private NetResponseHandler<Response> handler;
 	private int statusCode;
 	
-	public ApiRestAsyncTask(NetResponseHandler<Response> handler) {
+	public ApiRestAsyncTask(NetResponseHandler<Response> handler, Host host) {
+		connection = new ServerConnection(host);
 		this.handler = handler;
 	}
 

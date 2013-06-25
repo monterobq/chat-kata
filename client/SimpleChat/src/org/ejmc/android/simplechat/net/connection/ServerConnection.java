@@ -8,7 +8,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
-import org.ejmc.android.simplechat.configuration.DefaultValues;
+import org.ejmc.android.simplechat.configuration.Host;
 
 import android.net.http.AndroidHttpClient;
 
@@ -18,8 +18,8 @@ public class ServerConnection {
 	private String userAgent;
 	private HttpHost host;
 
-	public ServerConnection() {
-		host = new HttpHost(DefaultValues.HOST, DefaultValues.PORT);
+	public ServerConnection(Host host) {
+		this.host = new HttpHost(host.getAddress(), host.getPort());
 		userAgent = System.getProperty("http.agent");
 		context = new BasicHttpContext();
 	}
