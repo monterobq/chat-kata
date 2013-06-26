@@ -34,7 +34,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		addressEditText.setText(preferences.getString("host", DefaultValues.HOST));
 		
 		EditText portEditText = (EditText) findViewById(R.id.portEditText);
-		portEditText.setText(String.valueOf(preferences.getInt("port", DefaultValues.PORT)));
+		portEditText.setText(preferences.getString("port", DefaultValues.PORT));
 		
 	}
 
@@ -52,27 +52,27 @@ public class LoginActivity extends Activity implements OnClickListener {
 		Editor preferencesEditor = preferences.edit();
 		
 		EditText usernameEditText = (EditText) findViewById(R.id.usernameEditText);
-		String username = usernameEditText.getText().toString();
-		if(!username.trim().isEmpty()) {
+		String username = usernameEditText.getText().toString().trim();
+		if(!username.isEmpty()) {
 			preferencesEditor.putString("nick", username);
 		} else {
 			preferencesEditor.putString("nick", DefaultValues.NICK);
 		}
 		
 		EditText addressEditText = (EditText) findViewById(R.id.addressEditText);
-		String address = addressEditText.getText().toString();
-		if(!address.trim().isEmpty()) {
+		String address = addressEditText.getText().toString().trim();
+		if(!address.isEmpty()) {
 			preferencesEditor.putString("host", address);
 		} else {
 			preferencesEditor.putString("host", DefaultValues.HOST);
 		}
 		
 		EditText portEditText = (EditText) findViewById(R.id.portEditText);
-		String port = portEditText.getText().toString();
-		if(!port.trim().isEmpty()) {
-			preferencesEditor.putInt("port", Integer.parseInt(port));
+		String port = portEditText.getText().toString().trim();
+		if(!port.isEmpty()) {
+			preferencesEditor.putString("port", port);
 		} else {
-			preferencesEditor.putInt("port", DefaultValues.PORT);
+			preferencesEditor.putString("port", DefaultValues.PORT);
 		}
 		preferencesEditor.commit();
 		

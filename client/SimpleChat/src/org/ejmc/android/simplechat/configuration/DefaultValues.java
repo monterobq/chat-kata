@@ -6,7 +6,7 @@ public class DefaultValues {
 	
 	public static final String HOST = "172.16.100.51";
 	
-	public static final int PORT = 8080;
+	public static final String PORT = "";
 	
 	public static final String USER_AGENT = "http.agent";
 	

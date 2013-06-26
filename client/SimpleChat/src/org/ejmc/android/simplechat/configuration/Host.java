@@ -3,9 +3,9 @@ package org.ejmc.android.simplechat.configuration;
 public class Host {
 
 	private String address;
-	private int port;
+	private String port;
 	
-	public Host(String address, int port) {
+	public Host(String address, String port) {
 		this.address = address;
 		this.port = port;
 	}
@@ -18,11 +18,11 @@ public class Host {
 		this.address = address;
 	}
 
-	public int getPort() {
+	public String getPort() {
 		return port;
 	}
 
-	public void setPort(int port) {
+	public void setPort(String port) {
 		this.port = port;
 	}
 

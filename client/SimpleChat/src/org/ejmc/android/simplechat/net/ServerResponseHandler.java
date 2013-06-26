@@ -17,11 +17,11 @@ public class ServerResponseHandler<Ŕesponse> extends NetResponseHandler<Ŕespon
 
 	@Override
 	public void onNetError() {
-		Toast.makeText(applicationContext, R.string.error, Toast.LENGTH_LONG).show();
+		Toast.makeText(applicationContext, R.string.error, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void onRequestError(RequestError error) {
-		Toast.makeText(applicationContext, error.getError(), Toast.LENGTH_LONG).show();
+		Toast.makeText(applicationContext, error.getError(), Toast.LENGTH_SHORT).show();
 	}
 }

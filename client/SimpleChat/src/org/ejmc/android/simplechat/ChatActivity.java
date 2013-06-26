@@ -55,7 +55,7 @@ public class ChatActivity extends Activity implements OnClickListener {
 		nick = preferences.getString("nick", DefaultValues.NICK);
 
 		String address = preferences.getString("host", DefaultValues.HOST);
-		int port = preferences.getInt("port", DefaultValues.PORT);
+		String port = preferences.getString("port", DefaultValues.PORT);
 		Host host = new Host(address, port);
 
 		chatList = (TextView) findViewById(R.id.chatList);

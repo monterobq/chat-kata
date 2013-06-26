@@ -20,7 +20,11 @@ public class ServerConnection {
 	private HttpHost host;
 
 	public ServerConnection(Host host) {
-		this.host = new HttpHost(host.getAddress(), host.getPort());
+		if(!host.getPort().isEmpty()) {
+			this.host = new HttpHost(host.getAddress(), Integer.parseInt(host.getPort()));
+		} else {
+			this.host = new HttpHost(host.getAddress());
+		}
 		userAgent = System.getProperty("http.agent");
 		context = new BasicHttpContext();
 	}
