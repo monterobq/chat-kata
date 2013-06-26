@@ -24,7 +24,7 @@ In this part we build a mock of the GET method for the Chat API which returns a 
 	        	nick = "user2"
 	        	message = "hola"
 	    	}]
-	    	last_seq = 1
+	    	next_seq = 1
 	    }
 	```
 
@@ -100,7 +100,7 @@ In this part we hook the new created *ChatService* to your *ChatController* and 
 		// execute the controller
 		controller.list()
 		// validate the response
-		assert response.text == '{"messages":[{"nick":"user3","message":"hello"},{"nick":"user4","message":"hola"}],"last_seq":1}'
+		assert response.text == '{"messages":[{"nick":"user3","message":"hello"},{"nick":"user4","message":"hola"}],"next_seq":2}'
 	}
 
 	void testListFromLastSequence() {
@@ -113,9 +113,9 @@ In this part we hook the new created *ChatService* to your *ChatController* and 
 		//inject the mock
 		controller.chatService = mockService.createMock()
 		// execute the controller
-		controller.list(1)
+		controller.list(2)
 		// validate the response
-		assert response.text == '{"messages":[{"nick":"user3","message":"bye"}],"last_seq":2}'
+		assert response.text == '{"messages":[{"nick":"user3","message":"bye"}],"next_seq":3}'
 	}
 ```
 
@@ -175,15 +175,15 @@ In this part we hook the new created *ChatService* to your *ChatController* and 
 $ curl http://localhost:8080/chat-kata/api/chat --data '{"nick":"alex","message":"hello"}' --header "Content-Type: text/json; charset=UTF-8" -X POST
 
 $ curl http://localhost:8080/chat-kata/api/chat
-{"messages":[{"nick":"alex","message":"hello"}],"last_seq":0}
+{"messages":[{"nick":"alex","message":"hello"}],"next_seq":1}
 
 $ curl http://localhost:8080/chat-kata/api/chat --data '{"nick":"alex","message":"ciao"}' --header "Content-Type: text/json; charset=UTF-8" -X POST
 
 $ curl http://localhost:8080/chat-kata/api/chat
-{"messages":[{"nick":"alex","message":"hello"},{"nick":"alex","message":"ciao"}],"last_seq":1}
+{"messages":[{"nick":"alex","message":"hello"},{"nick":"alex","message":"ciao"}],"next_seq":2}
 
-$ curl http://localhost:8080/chat-kata/api/chat?seq=0
-{"messages":[{"nick":"alex","message":"ciao"}],"last_seq":1}
+$ curl http://localhost:8080/chat-kata/api/chat?seq=1
+{"messages":[{"nick":"alex","message":"ciao"}],"next_seq":2}
 ```
 
 PART IV - Handle API errors
@@ -264,7 +264,7 @@ $ curl http://localhost:8080/chat-kata/api/chat --data 'blah blah blah' --header
 {"error":"Invalid body"}
 ```
 
-PARTE V - Deploy to an application server
+PART V - Deploy to an application server
 ------------------------------------------
 
 1. Install Tomcat 7 in your local machine following the instrunctions from [here][9]
@@ -280,6 +280,12 @@ PARTE V - Deploy to an application server
 5. Start tomcat ``CATALINA_HOME/bin/startup.sh``
 
 6. You should have your application running on [http://localhost:8080/chat-kata]
+
+
+PART VI - Bonus
+------------------------------------------
+
+1. Implements API delete call in the server.
 
 [1]: http://grails.org/doc/2.2.1/guide/testing.html "Grails Unit Testing"
 [2]: http://grails.org/doc/2.2.1/ref/Controllers/render.html "Grails reder user guide"
