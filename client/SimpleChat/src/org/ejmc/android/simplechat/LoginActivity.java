@@ -53,7 +53,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		
 		EditText usernameEditText = (EditText) findViewById(R.id.usernameEditText);
 		String username = usernameEditText.getText().toString();
-		if(!username.isEmpty()) {
+		if(!username.trim().isEmpty()) {
 			preferencesEditor.putString("nick", username);
 		} else {
 			preferencesEditor.putString("nick", DefaultValues.NICK);
@@ -61,7 +61,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		
 		EditText addressEditText = (EditText) findViewById(R.id.addressEditText);
 		String address = addressEditText.getText().toString();
-		if(!address.isEmpty()) {
+		if(!address.trim().isEmpty()) {
 			preferencesEditor.putString("host", address);
 		} else {
 			preferencesEditor.putString("host", DefaultValues.HOST);
@@ -69,7 +69,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		
 		EditText portEditText = (EditText) findViewById(R.id.portEditText);
 		String port = portEditText.getText().toString();
-		if(!port.isEmpty()) {
+		if(!port.trim().isEmpty()) {
 			preferencesEditor.putInt("port", Integer.parseInt(port));
 		} else {
 			preferencesEditor.putInt("port", DefaultValues.PORT);

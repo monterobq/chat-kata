@@ -11,4 +11,9 @@
 
     <string name="login">Login</string>
 
+    <string name="user">User</string>
+
+    <string name="send">Send</string>
+    <string name="error">Network Connection Error</string>
+
 </resources>

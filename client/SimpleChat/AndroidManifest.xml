@@ -24,13 +24,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.ejmc.android.simplechat.ConfigActivity"
-            android:label="@string/app_name" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.ejmc.android.simplechat.LoginActivity" />
-        </activity>
-        <activity
             android:name="org.ejmc.android.simplechat.ChatActivity"
             android:label="@string/app_name" >
             <meta-data

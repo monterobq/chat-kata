@@ -9,7 +9,7 @@
     tools:context=".LoginActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/appTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -22,9 +22,9 @@
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/appTextView"
         android:layout_marginTop="39dp"
-        android:layout_toLeftOf="@+id/textView1"
+        android:layout_toLeftOf="@+id/appTextView"
         android:text="@string/username"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/usernameTextView"
         android:layout_alignBottom="@+id/usernameTextView"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/appTextView"
         android:layout_marginLeft="62dp"
         android:ems="10"
         android:singleLine="true" >

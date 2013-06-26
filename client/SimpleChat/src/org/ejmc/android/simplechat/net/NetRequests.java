@@ -12,18 +12,24 @@ import org.ejmc.android.simplechat.model.Message;
 import org.ejmc.android.simplechat.net.connection.ApiRestAsyncTask;
 
 public class NetRequests {
-
-	public void chatGET(int seq, NetResponseHandler<ChatList> handler, Host host) {
-		String uri = seq > 0 ? (DefaultValues.URI + "?seq=" + seq) : DefaultValues.URI;
-		HttpGet get = new HttpGet(uri);
-		new ApiRestAsyncTask<ChatList>(handler, host).execute(get);
+	
+	private Host host;
+	
+	public NetRequests(Host host) {
+		this.host = host;
 	}
 
-	public void chatPOST(Message message, NetResponseHandler<Message> handler, Host host) {
+	public void chatGET(int seq, NetResponseHandler<ChatList> handler) {
+		String uri = seq > 0 ? (DefaultValues.URI + "?seq=" + seq) : DefaultValues.URI;
+		HttpGet get = new HttpGet(uri);
+		new ApiRestAsyncTask<ChatList>(host, handler, ChatList.class).execute(get);
+	}
+
+	public void chatPOST(Message message, NetResponseHandler<Message> handler) {
 		HttpPost post = new HttpPost(DefaultValues.URI);
 		StringEntity entity = getJsonStringEntity(message);
 		post.setEntity(entity);
-		new ApiRestAsyncTask<Message>(handler, host).execute(post);
+		new ApiRestAsyncTask<Message>(host, handler, message).execute(post);
 
 	}
 
