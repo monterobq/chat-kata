@@ -33,12 +33,8 @@ public class ChatActivity extends Activity implements OnClickListener {
 	private final Runnable refreshThread = new Runnable() {
 		@Override
 		public void run() {
-			try {
-				requests.chatGET(nextSeq.getNextSeq(), getServerHandler);
-				refreshThreadHandler.postDelayed(this, 1000);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			requests.chatGET(nextSeq.getNextSeq(), getServerHandler);
+			refreshThreadHandler.postDelayed(this, DefaultValues.REFRESH_TIME);
 		}
 	};
 

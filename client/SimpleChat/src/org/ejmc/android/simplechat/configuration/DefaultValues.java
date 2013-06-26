@@ -20,6 +20,8 @@ public class DefaultValues {
 	
 	public static final String SHARED_PREFERENCES = "SharedPreferences";
 	
+	public static final int REFRESH_TIME = 1000;
+	
 	public static final Gson GSON = new Gson();
 
 }
