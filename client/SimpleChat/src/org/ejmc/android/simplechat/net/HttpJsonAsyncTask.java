@@ -3,10 +3,15 @@ package org.ejmc.android.simplechat.net;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
 
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.ejmc.android.simplechat.Magic;
 import org.ejmc.android.simplechat.model.RequestError;
 
 import android.net.http.AndroidHttpClient;
@@ -121,9 +126,27 @@ public class HttpJsonAsyncTask<Response> extends
 		HttpEntity e = resp.getEntity();
 		InputStreamReader reader = null;
 
+		String encoding = Magic.DEFAULT_ENCODING;
+
+		Header ct = e.getContentType();
+		if (ct != null) {
+			for (HeaderElement el : ct.getElements()) {
+				NameValuePair pair = el.getParameterByName("charset");
+				if (pair != null) {
+					String candidate = pair.getValue();
+					if (Charset.isSupported(candidate)) {
+						encoding = candidate;
+					} else {
+						// if encoding is not supported, return error
+					}
+
+				}
+			}
+		}
+
 		try {
 			StringWriter writer = new StringWriter();
-			reader = new InputStreamReader(e.getContent());
+			reader = new InputStreamReader(e.getContent(), encoding);
 
 			char[] buff = new char[32768];
 			int leidos;
