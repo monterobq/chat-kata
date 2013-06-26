@@ -3,10 +3,11 @@ package org.ejmc.android.simplechat;
 import org.ejmc.android.simplechat.configuration.DefaultValues;
 import org.ejmc.android.simplechat.configuration.Host;
 import org.ejmc.android.simplechat.model.Message;
-import org.ejmc.android.simplechat.model.NextSeq;
+import org.ejmc.android.simplechat.model.NextSequence;
+import org.ejmc.android.simplechat.net.DeleteServerHandler;
 import org.ejmc.android.simplechat.net.GetServerHandler;
 import org.ejmc.android.simplechat.net.NetRequests;
-import org.ejmc.android.simplechat.net.PostServerHandler;
+import org.ejmc.android.simplechat.net.ServerResponseHandler;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -25,10 +26,11 @@ public class ChatActivity extends Activity implements OnClickListener {
 	private String nick;
 	private NetRequests requests;
 	private TextView chatList;
-	private PostServerHandler postServerHandler;
+	private ServerResponseHandler<Message> postServerHandler;
 	private GetServerHandler getServerHandler;
+	private DeleteServerHandler deleteServerHandler;
 	private Handler refreshThreadHandler;
-	private NextSeq nextSeq;
+	private NextSequence nextSeq;
 
 	private final Runnable refreshThread = new Runnable() {
 		@Override
@@ -43,6 +45,7 @@ public class ChatActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chat);
 		findViewById(R.id.sendButton).setOnClickListener(this);
+		findViewById(R.id.deleteButton).setOnClickListener(this);
 		setupActionBar();
 
 		SharedPreferences preferences = getSharedPreferences(
@@ -56,13 +59,13 @@ public class ChatActivity extends Activity implements OnClickListener {
 
 		chatList = (TextView) findViewById(R.id.chatList);
 
-		postServerHandler = new PostServerHandler(getApplicationContext(),
-				chatList);
+		postServerHandler = new ServerResponseHandler<Message>(getApplicationContext());
 
-		nextSeq = new NextSeq();
+		nextSeq = new NextSequence();
 
-		getServerHandler = new GetServerHandler(getApplicationContext(),
-				nextSeq, nick, chatList);
+		getServerHandler = new GetServerHandler(getApplicationContext(), nextSeq, chatList);
+		
+		deleteServerHandler = new DeleteServerHandler(getApplicationContext(), chatList);
 
 		refreshThreadHandler = new Handler();
 
@@ -98,14 +101,18 @@ public class ChatActivity extends Activity implements OnClickListener {
 	}
 
 	@Override
-	public void onClick(View arg0) {
-		EditText messageEditText = (EditText) findViewById(R.id.messageToSendEditText);
-		String messageString = messageEditText.getText().toString().trim();
-		if (!messageString.isEmpty()) {
-			Message message = new Message(nick, messageString);
-			requests.chatPOST(message, postServerHandler);
+	public void onClick(View view) {
+		if(view.getId() == R.id.sendButton) {
+			EditText messageEditText = (EditText) findViewById(R.id.messageToSendEditText);
+			String messageString = messageEditText.getText().toString().trim();
+			if (!messageString.isEmpty()) {
+				Message message = new Message(nick, messageString);
+				requests.chatPOST(message, postServerHandler);
+			}
+			messageEditText.setText("");
+		} else {
+			requests.chatDELETE(deleteServerHandler);
 		}
-		messageEditText.setText("");
 	}
 
 	private void setupActionBar() {

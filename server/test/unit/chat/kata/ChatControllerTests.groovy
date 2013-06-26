@@ -15,14 +15,14 @@ class ChatControllerTests {
 				new ChatMessage([nick:"user3",message:"hello"]),
 				new ChatMessage([nick:"user4",message:"hola"])
 			])
-			return 1
+			return 2
 		}
 		//inject the mock
 		controller.chatService = mockService.createMock()
 		// execute the controller
 		controller.list()
 		// validate the response
-		assert response.text == '{"messages":[{"nick":"user3","message":"hello"},{"nick":"user4","message":"hola"}],"next_seq":1}'
+		assert response.text == '{"messages":[{"nick":"user3","message":"hello"},{"nick":"user4","message":"hola"}],"next_seq":2}'
 	}
 
 	void testListFromLastSequence() {
@@ -35,9 +35,9 @@ class ChatControllerTests {
 		//inject the mock
 		controller.chatService = mockService.createMock()
 		// execute the controller
-		controller.list(1)
+		controller.list(2)
 		// validate the response
-		assert response.text == '{"messages":[{"nick":"user3","message":"bye"}],"next_seq":2}'
+		assert response.text == '{"messages":[{"nick":"user3","message":"bye"}],"next_seq":3}'
 	}
 
 	void testSend(){

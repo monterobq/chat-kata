@@ -9,6 +9,10 @@ public class NetResponseHandler<Response> {
 
 	}
 
+	public void onSuccess() {
+		
+	}
+	
 	public void onNetError() {
 
 	}

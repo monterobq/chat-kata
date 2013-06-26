@@ -9,8 +9,8 @@ public class ChatList {
 	
 	private List<Message> messages;
 	
-	@SerializedName("last_seq")
-	private int lastSeq;
+	@SerializedName("next_seq")
+	private int nextSeq;
 
 	public List<Message> getMessages() {
 		return messages;
@@ -20,14 +20,11 @@ public class ChatList {
 		this.messages = messages;
 	}
 
-	public int getLastSeq() {
-		return lastSeq;
+	public int getNextSeq() {
+		return nextSeq;
 	}
 
-	public void setLastSeq(int lastSeq) {
-		this.lastSeq = lastSeq;
+	public void setNextSeq(int nextSeq) {
+		this.nextSeq = nextSeq;
 	}
-	
-	
-	
 }

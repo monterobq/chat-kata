@@ -15,5 +15,6 @@
 
     <string name="send">Send</string>
     <string name="error">Network Connection Error</string>
+    <string name="delete">Delete</string>
 
 </resources>

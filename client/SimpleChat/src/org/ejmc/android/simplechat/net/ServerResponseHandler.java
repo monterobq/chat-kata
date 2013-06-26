@@ -13,7 +13,6 @@ public class ServerResponseHandler<Ŕesponse> extends NetResponseHandler<Ŕespon
 	public ServerResponseHandler(Context applicationContext) {
 		this.applicationContext = applicationContext;
 	}
-	
 
 	@Override
 	public void onNetError() {

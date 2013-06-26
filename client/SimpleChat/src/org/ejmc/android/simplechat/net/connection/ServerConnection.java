@@ -35,7 +35,10 @@ public class ServerConnection {
 		try {
 			HttpResponse httpResponse = client.execute(host, request, context);
 			int statusCode = httpResponse.getStatusLine().getStatusCode();
-			String message = EntityUtils.toString(httpResponse.getEntity(), DefaultValues.CHARSET);
+			String message = "";
+			if(httpResponse.getEntity() != null) {
+				message = EntityUtils.toString(httpResponse.getEntity(), DefaultValues.CHARSET);
+			}
 			response = new ServerResponse(statusCode, message);
 		} catch (IOException e) {
 			e.printStackTrace();

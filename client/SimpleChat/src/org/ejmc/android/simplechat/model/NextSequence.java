@@ -1,10 +1,10 @@
 package org.ejmc.android.simplechat.model;
 
-public class NextSeq {
+public class NextSequence {
 	
 	private int nextSeq;
 	
-	public NextSeq() {
+	public NextSequence() {
 		nextSeq = 0;
 	}
 	

@@ -16,20 +16,16 @@ public class ApiRestAsyncTask<Response> extends
 	private ServerConnection connection;
 	private NetResponseHandler<Response> handler;
 	private Class<Response> responseClass;
-	private Response messageToSend;
 	private int statusCode;
 
-	@SuppressWarnings("unchecked")
-	public ApiRestAsyncTask(Host host, NetResponseHandler<Response> handler,
-			Response message) {
-		this(host, handler, (Class<Response>) message.getClass());
-		messageToSend = message;
-	}
-
-	public ApiRestAsyncTask(Host host, NetResponseHandler<Response> handler,
-			Class<Response> responseClass) {
+	public ApiRestAsyncTask(Host host, NetResponseHandler<Response> handler, Class<Response> responseClass) {
 		connection = new ServerConnection(host);
 		this.responseClass = responseClass;
+		this.handler = handler;
+	}
+	
+	public ApiRestAsyncTask(Host host, NetResponseHandler<Response> handler) {
+		connection = new ServerConnection(host);
 		this.handler = handler;
 	}
 
@@ -56,8 +52,11 @@ public class ApiRestAsyncTask<Response> extends
 				handler.onSuccess(response);
 				break;
 			case 201:
-				handler.onSuccess(messageToSend);
+				handler.onSuccess();
 				break;
+			case 204:
+				handler.onSuccess();
+				break;				
 			case 400:
 				RequestError error = DefaultValues.GSON.fromJson(results, RequestError.class);
 				handler.onRequestError(error);
