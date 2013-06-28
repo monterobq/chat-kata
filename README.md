@@ -30,7 +30,7 @@ This the main resource of the chat server.
 
 **Parameters:**
 
-<table class="confluenceTable"><tbody><tr><th class="confluenceTh">Name</th><th colspan="1" class="confluenceTh">Type</th><th class="confluenceTh">Description</th><th colspan="1" class="confluenceTh">Mandatory</th><th colspan="1" class="confluenceTh">Cardinality</th><th class="confluenceTh">Example</th></tr><tr><td colspan="1" class="confluenceTd">seq</td><td colspan="1" class="confluenceTd">Integer</td><td colspan="1" class="confluenceTd">Sequence from last received message. No present if this is the first call</td><td colspan="1" class="confluenceTd">No</td><td colspan="1" class="confluenceTd">1</td><td colspan="1" class="confluenceTd">/api/chat?seq=3</td></tr></tbody></table>
+<table class="confluenceTable"><tbody><tr><th class="confluenceTh">Name</th><th colspan="1" class="confluenceTh">Type</th><th class="confluenceTh">Description</th><th colspan="1" class="confluenceTh">Mandatory</th><th colspan="1" class="confluenceTh">Cardinality</th><th class="confluenceTh">Example</th></tr><tr><td colspan="1" class="confluenceTd">seq</td><td colspan="1" class="confluenceTd">Integer</td><td colspan="1" class="confluenceTd">Sequence from next message. No present if this is the first call</td><td colspan="1" class="confluenceTd">No</td><td colspan="1" class="confluenceTd">1</td><td colspan="1" class="confluenceTd">/api/chat?seq=3</td></tr></tbody></table>
 
 **Response:**
 
