@@ -40,7 +40,7 @@ This the main resource of the chat server.
 	{
     	"messages": [ {"nick":"user1", "message":"hi there"},
                   {"nick":"user2", "message":"hola"} ],
-    	"last_seq": 6
+    	"next_seq": 6
     }
     ````
 
@@ -49,7 +49,7 @@ This the main resource of the chat server.
 	```json
 	{
     	"messages": [],
-    	"last_seq": 6
+    	"next_seq": 6
     }
     ```
 
