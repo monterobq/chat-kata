@@ -6,7 +6,7 @@ import org.ejmc.android.simplechat.model.RequestError;
 import android.content.Context;
 import android.widget.Toast;
 
-public class ServerResponseHandler<Ŕesponse> extends NetResponseHandler<Ŕesponse> {
+public class ServerResponseHandler<Response> extends NetResponseHandler<Response> {
 	
 	private Context applicationContext;
 	
