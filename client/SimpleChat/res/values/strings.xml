@@ -3,4 +3,18 @@
 
     <string name="app_name">SimpleChat</string>
 
+    <string name="username">Username</string>
+
+    <string name="address">Address</string>
+
+    <string name="port">Port</string>
+
+    <string name="login">Login</string>
+
+    <string name="user">User</string>
+
+    <string name="send">Send</string>
+    <string name="error">Network Connection Error</string>
+    <string name="delete">Delete</string>
+
 </resources>

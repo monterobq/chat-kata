@@ -16,7 +16,7 @@ class ChatController {
 			for(currentMessage in chatMessages){
 				messages.add([nick:currentMessage.nick, message:currentMessage.message])
 			}
-			last_seq = nextMessage
+			next_seq = nextMessage
 		}
 	}
 
@@ -28,16 +28,21 @@ class ChatController {
 		def message = new ChatMessage(request.JSON)
 		if(message.validate()) {
 			chatService.putChatMessage(message)
-			render(status:201)
+			render(status: 201)
 		} else {
 			render(status: 400, contentType: "text/json"){
 				if (message.errors.hasFieldErrors("nick")) {
 					error = "Missing nick parameter"
-				}	
+				}
 				if (message.errors.hasFieldErrors("message")) {
 					error = "Missing message parameter"
 				}
 			}
 		}
+	}
+
+	def delete(){
+		chatService.cleanChatMessages()
+		render(status: 204)
 	}
 }

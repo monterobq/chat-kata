@@ -15,6 +15,10 @@ class UrlMappingsTest {
 	public void testChatSendURLMapping() {
 		assertRestForwardUrlMapping("POST", "/api/chat", controller:"chat", action:"send")
 	}
+	
+	public void testChatDeleteURLMapping() {
+		assertRestForwardUrlMapping("DELETE", "/api/chat", controller:"chat", action:"delete")
+	}
 
 	private void assertRestForwardUrlMapping(assertions, String method, String url) {
 		assertRestForwardUrlMapping(assertions, method, url, null)

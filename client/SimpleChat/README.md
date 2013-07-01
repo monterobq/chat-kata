@@ -1,5 +1,4 @@
 
-
 PART II - Make a simple Android client
 ---------------------------------------
 
@@ -64,6 +63,8 @@ PART II - Make a simple Android client
  >* Schedule next invocation on success
 	
  >* Handle Activity Lifecycle to stop scheduling
+ 
+10. Bonus. Add delete chat messages function on client. 
 	 
 
 Additional

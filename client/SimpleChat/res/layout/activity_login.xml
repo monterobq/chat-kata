@@ -8,4 +8,85 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".LoginActivity" >
 
+    <TextView
+        android:id="@+id/appTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appTextView"
+        android:layout_marginTop="39dp"
+        android:layout_toLeftOf="@+id/appTextView"
+        android:text="@string/username"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/usernameTextView"
+        android:layout_alignBottom="@+id/usernameTextView"
+        android:layout_alignLeft="@+id/appTextView"
+        android:layout_marginLeft="62dp"
+        android:ems="10"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/addressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usernameEditText"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/usernameEditText"
+        android:text="@string/address"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/addressEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/addressTextView"
+        android:layout_alignBottom="@+id/addressTextView"
+        android:layout_alignLeft="@+id/usernameEditText"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/portTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addressEditText"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/usernameEditText"
+        android:text="@string/port"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/portEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/portTextView"
+        android:layout_alignBottom="@+id/portTextView"
+        android:layout_alignLeft="@+id/addressEditText"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/portEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="@string/login" />
+
 </RelativeLayout>

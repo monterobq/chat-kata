@@ -25,7 +25,6 @@ class ChatServiceTest {
 		assert messages[0] == message1
 		assert messages[1] == message2
 		assert nextMessage == 2
-		
 	}
 	
 	void testCollectMessagesFromSequence() {
@@ -55,6 +54,32 @@ class ChatServiceTest {
 		assert messages[0] == message3
 		assert messages[1] == message4
 		assert nextMessage == 4
+	}
+	
+	void testDeleteMessages() {
+		// Add a couple of messages to the chat
+		def message1 = new ChatMessage([nick:"user1", message: "hello"])
+		def message2 = new ChatMessage([nick:"user2", message: "hi there"])
+		service.putChatMessage(message1)
+		service.putChatMessage(message2)
+		
+		//Retrieve all messages from the chat
+		List<ChatMessage> messages = new ArrayList()
+		def nextMessage = service.collectChatMessages(messages)
+		
+		//Assert correct response
+		assert messages.size() == 2
+		assert nextMessage == 2
+		
+		service.cleanChatMessages()
+		
+		//Retrieve all messages from the chat
+		messages = new ArrayList()
+		nextMessage = service.collectChatMessages(messages)
+		
+		//Assert correct response
+		assert messages.size() == 0
+		assert nextMessage == 0
 	}
 	
 	

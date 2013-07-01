@@ -1,13 +1,14 @@
 package org.ejmc.android.simplechat.model;
 
-
-/**
- * Server request error.
- * 
- * @author startic
- * 
- */
 public class RequestError {
 
+	private String error;
 
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
 }

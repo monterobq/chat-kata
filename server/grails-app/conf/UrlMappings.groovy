@@ -4,7 +4,7 @@ class UrlMappings {
 		"/"(view:"/index")
 		"500"(view:'/error')
 		"/api/chat/"(controller: "chat"){
-			action = [GET: "list", POST: "send"]
+			action = [GET: "list", POST: "send", DELETE: "delete"]
 		}
 	}
 }

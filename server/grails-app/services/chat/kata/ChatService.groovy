@@ -17,10 +17,10 @@ class ChatService {
 	 * 
 	 * @return the sequence of the last message collected.
 	 */
-	Integer collectChatMessages(Collection<ChatMessage> collector, Integer fromSeq = null){
+	Integer collectChatMessages(Collection<ChatMessage> collector, Integer nextSeq = null){
 		lock.readLock().lock()
 		try {
-			int firstMessage = fromSeq != null ? fromSeq : 0;
+			int firstMessage = nextSeq != null ? nextSeq : 0;
 			if(firstMessage < messages.size()) {
 				collector.addAll(messages.subList(firstMessage, messages.size()))
 			}
@@ -39,6 +39,19 @@ class ChatService {
 		lock.writeLock().lock()
 		try {
 			messages.add(message)
+		} finally {
+			lock.writeLock().unlock()
+		}
+	}
+	
+	/**
+	 * Cleans chat messages
+	 *
+	 */
+	void cleanChatMessages() {
+		lock.writeLock().lock()
+		try {
+			messages.clear()
 		} finally {
 			lock.writeLock().unlock()
 		}

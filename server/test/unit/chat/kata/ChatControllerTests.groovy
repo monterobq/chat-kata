@@ -1,8 +1,5 @@
 package chat.kata
 
-/**
- * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
- */
 @TestFor(ChatController)
 class ChatControllerTests {
 	
@@ -18,14 +15,14 @@ class ChatControllerTests {
 				new ChatMessage([nick:"user3",message:"hello"]),
 				new ChatMessage([nick:"user4",message:"hola"])
 			])
-			return 1
+			return 2
 		}
 		//inject the mock
 		controller.chatService = mockService.createMock()
 		// execute the controller
 		controller.list()
 		// validate the response
-		assert response.text == '{"messages":[{"nick":"user3","message":"hello"},{"nick":"user4","message":"hola"}],"last_seq":1}'
+		assert response.text == '{"messages":[{"nick":"user3","message":"hello"},{"nick":"user4","message":"hola"}],"next_seq":2}'
 	}
 
 	void testListFromLastSequence() {
@@ -38,9 +35,9 @@ class ChatControllerTests {
 		//inject the mock
 		controller.chatService = mockService.createMock()
 		// execute the controller
-		controller.list(1)
+		controller.list(2)
 		// validate the response
-		assert response.text == '{"messages":[{"nick":"user3","message":"bye"}],"last_seq":2}'
+		assert response.text == '{"messages":[{"nick":"user3","message":"bye"}],"next_seq":3}'
 	}
 
 	void testSend(){
@@ -48,7 +45,7 @@ class ChatControllerTests {
 
 		// create a mock definition with a stub for the putChatMessage method
 		def mockService = mockFor(ChatService)
-		mockService.demand.putChatMessage { message -> sentMessage = message }
+		mockService.demand.putChatMessage(1) { message -> sentMessage = message }
 		controller.chatService = mockService.createMock()
 		// execute the controller
 		def data = [nick:"user3",message:"aloha"]
@@ -57,6 +54,18 @@ class ChatControllerTests {
 		controller.send()
 		//validate that message was sent to controller
 		assert sentMessage == message
+	}
+	
+	void testDelete(){
+		// create a mock definition with a stub for the cleanChatMessages method
+		def mockService = mockFor(ChatService)
+		mockService.demand.cleanChatMessages(1) { }
+		//inject the mock
+		controller.chatService = mockService.createMock()
+		// execute the controller
+		controller.delete()
+		//validate the response
+		assert response.status == 204
 	}
 
 	void testInvalidSeq(){
