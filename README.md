@@ -3,11 +3,6 @@ chat-kata
 
 A Code Kata for building a REST client-server chat app for Android.
 
-Server-side Kata
------------------
-
-Follow the README in [server directory](/server)
-
 Client-side Kata
 -----------------
 
