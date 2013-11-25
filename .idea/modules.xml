@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/client/SimpleChat/SimpleChat.iml" filepath="$PROJECT_DIR$/client/SimpleChat/SimpleChat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/grails-app/grails-app.iml" filepath="$PROJECT_DIR$/server/grails-app/grails-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/test/test.iml" filepath="$PROJECT_DIR$/server/test/test.iml" />
+    </modules>
+  </component>
+</project>
+
