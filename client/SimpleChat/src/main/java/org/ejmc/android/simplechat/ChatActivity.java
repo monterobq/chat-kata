@@ -1,4 +1,6 @@
 package org.ejmc.android.simplechat;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import com.google.gson.Gson;
 import org.apache.http.client.HttpClient;
@@ -41,7 +43,9 @@ public class ChatActivity extends ListActivity {
     private ArrayList<Message> listado;
     private Adaptador adaptador;
     private ListView lv;
-    private int seqNumber=0;
+    private int seqNumber;
+
+    private SharedPreferences prefs;
 
 
 
@@ -62,6 +66,11 @@ public class ChatActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        prefs = getSharedPreferences("Chat", Context.MODE_PRIVATE);
+
+
+        seqNumber = prefs.getInt("SEQ", 0);
 
         nick = getIntent().getExtras().getString("nick");
         nombre=(TextView) findViewById(R.id.nick);
@@ -152,6 +161,11 @@ public class ChatActivity extends ListActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        prefs.edit().putInt("SEQ", seqNumber).commit();
+    }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -178,7 +192,9 @@ public class ChatActivity extends ListActivity {
 
         //adaptador = new Adaptador(
         //        Chat.this, listado);
+        lv=(ListView)this.getListView();
         setListAdapter((ListAdapter) adaptador);
+        lv.setSelection(lv.getAdapter().getCount() - 1);
     }
 
 	@Override

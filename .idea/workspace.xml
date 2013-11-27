@@ -7,7 +7,7 @@
     <file path="/pom.xml" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385461308168" ignored="false" />
     <file path="/fragment.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385567355949" ignored="false" />
     <file path="/LoginActivityTest.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385484433403" ignored="false" />
-    <file path="/ChatActivity.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385570399646" ignored="false" />
+    <file path="/ChatActivity.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385571875569" ignored="false" />
     <file path="/JSONparser.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385556408658" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,15 +72,15 @@
       <file leaf-file-name="ChatActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="284" column="46" selection-start="8320" selection-end="8320" vertical-scroll-proportion="0.5016611">
+            <state line="121" column="65" selection-start="3662" selection-end="3662" vertical-scroll-proportion="0.77242523">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2828#3504#0" expanded="true" />
-                <element signature="e#2930#3478#0" expanded="true" />
-                <element signature="e#3459#3460#0" expanded="true" />
-                <element signature="e#3493#3494#0" expanded="true" />
-                <element signature="e#3600#4572#0" expanded="true" />
-                <element signature="e#4561#4562#0" expanded="true" />
+                <element signature="e#3053#3729#0" expanded="true" />
+                <element signature="e#3155#3703#0" expanded="true" />
+                <element signature="e#3684#3685#0" expanded="true" />
+                <element signature="e#3718#3719#0" expanded="true" />
+                <element signature="e#3825#4797#0" expanded="true" />
+                <element signature="e#4786#4787#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -752,15 +752,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="284" column="46" selection-start="8320" selection-end="8320" vertical-scroll-proportion="0.5016611">
+        <state line="121" column="65" selection-start="3662" selection-end="3662" vertical-scroll-proportion="0.77242523">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2828#3504#0" expanded="true" />
-            <element signature="e#2930#3478#0" expanded="true" />
-            <element signature="e#3459#3460#0" expanded="true" />
-            <element signature="e#3493#3494#0" expanded="true" />
-            <element signature="e#3600#4572#0" expanded="true" />
-            <element signature="e#4561#4562#0" expanded="true" />
+            <element signature="e#3053#3729#0" expanded="true" />
+            <element signature="e#3155#3703#0" expanded="true" />
+            <element signature="e#3684#3685#0" expanded="true" />
+            <element signature="e#3718#3719#0" expanded="true" />
+            <element signature="e#3825#4797#0" expanded="true" />
+            <element signature="e#4786#4787#0" expanded="true" />
           </folding>
         </state>
       </provider>
