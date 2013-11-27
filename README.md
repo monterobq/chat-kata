@@ -1,5 +1,5 @@
 chat-kata
-=========
+========= dfgdfgdfg
 
 A Code Kata for building a REST client-server chat app for Android.
 
