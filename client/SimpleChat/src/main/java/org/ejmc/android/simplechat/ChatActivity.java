@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.*;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Handler;
 
 /**
  * Chat activity.
@@ -27,6 +30,7 @@ public class ChatActivity extends ListActivity {
     private ArrayList<Message> listado;
     private Adaptador adaptador;
     private ListView lv;
+    private Handler handler;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,27 @@ public class ChatActivity extends ListActivity {
         //setListAdapter((ListAdapter) adaptador);
         recargar();
         lv=(ListView)this.getListView();
+
+        Timer T=new Timer();
+        T.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        listado.add(
+                                new Message("Nombre 4", "Ok"));
+                        recargar();
+                    }
+                });
+            }
+        }, 1000, 1000);
+
+
+
+
 
 
 
