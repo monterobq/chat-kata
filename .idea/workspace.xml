@@ -70,7 +70,7 @@
       <file leaf-file-name="ChatActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="56" selection-start="2515" selection-end="2515" vertical-scroll-proportion="0.5478261">
+            <state line="68" column="150" selection-start="1831" selection-end="1831" vertical-scroll-proportion="0.2347826">
               <folding />
             </state>
           </provider>
@@ -142,6 +142,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="chat-kata" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chat-kata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SimpleChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -495,7 +505,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/SimpleChat/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="86" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0" />
+        <state line="20" column="86" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/LoginActivity.java">
@@ -531,7 +543,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/SimpleChat/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="64" selection-start="469" selection-end="469" vertical-scroll-proportion="0.2777778" />
+        <state line="11" column="64" selection-start="469" selection-end="469" vertical-scroll-proportion="0.2777778">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Entornos/sdk-idea/sources/android-15/java/lang/Runnable.java">
@@ -541,7 +555,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="56" selection-start="2515" selection-end="2515" vertical-scroll-proportion="0.5478261">
+        <state line="68" column="150" selection-start="1831" selection-end="1831" vertical-scroll-proportion="0.2347826">
           <folding />
         </state>
       </provider>
