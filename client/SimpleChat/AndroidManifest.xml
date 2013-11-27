@@ -38,6 +38,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.ejmc.android.simplechat.LoginActivity" />
         </activity>
+
+        <uses-permission android:name="android.permission.INTERNET" />
     </application>
 
 </manifest>
