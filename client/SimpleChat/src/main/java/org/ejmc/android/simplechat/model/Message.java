@@ -17,6 +17,7 @@ public class Message {
         this.mensaje = mensaje;
     }
 
+
     public void setNombre(String nombre) { this.nombre = nombre; }
 
     public String getNombre() { return nombre; }
@@ -24,4 +25,6 @@ public class Message {
     public void setMensaje(String mensaje) { this.mensaje = mensaje; }
 
     public String getMensaje() { return mensaje; }
+
+
 }

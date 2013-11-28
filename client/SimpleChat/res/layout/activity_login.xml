@@ -6,7 +6,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:layout_gravity="center_vertical|center_horizontal|center"
-             tools:context=".Login" >
+             tools:context=".Login">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                     android:id="@+id/editUsuario"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" android:maxLength="2">
+                    android:layout_weight="1" android:maxLength="16">
 
 
             </EditText>
@@ -51,7 +51,7 @@
                     android:id="@+id/editPwd"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" android:maxLength="2">
+                    android:layout_weight="1" android:maxLength="16">
 
 
             </EditText>
