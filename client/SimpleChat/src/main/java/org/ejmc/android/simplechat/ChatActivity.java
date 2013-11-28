@@ -44,6 +44,7 @@ public class ChatActivity extends ListActivity {
     private Adaptador adaptador;
     private ListView lv;
     private int seqNumber;
+    private String msg;
 
     private SharedPreferences prefs;
 
@@ -52,8 +53,10 @@ public class ChatActivity extends ListActivity {
     //URL to get JSON Array
     //private static String url = "http://10.0.2.2:8080/chat-kata/api/chat?seq=0";
 
-    private static String url ="http://172.16.100.73:8080/chat-kata/api/chat?seq=";
+    //private static String url ="http://172.16.100.73:8080/chat-kata/api/chat?seq=";
 
+
+    private static String url ="http://10.0.2.2:8080/chat-kata/api/chat?seq=";
 
     //JSON Node Names
     private static final String TAG_USER = "user";
@@ -102,6 +105,8 @@ public class ChatActivity extends ListActivity {
 
         url+=seqNumber;
 
+
+
         Timer T=new Timer();
         T.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -138,10 +143,10 @@ public class ChatActivity extends ListActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String msg = editor.getText().toString();
+                msg = editor.getText().toString();
                 if (hayCaracter(msg)) {//lo envio si no no
                     Message m = listado.get(listado.size() - 1);
-                    if (m.getNombre().equals(nick)) {
+                    /*if (m.getNombre().equals(nick)) {
                         String lastmessage = listado.get(listado.size() - 1).getMensaje();
                         //listado.get(listado.size()).setMensaje(listado.get(listado.size()).getMensaje()+"/n"+msg);
                         listado.remove(listado.size() - 1);
@@ -149,7 +154,9 @@ public class ChatActivity extends ListActivity {
 
                     } else {
                         listado.add(new Message(nick, msg));
-                    }
+                    }   */
+
+                    new postChat().execute();
 
 
                     recargar();
@@ -237,7 +244,8 @@ public class ChatActivity extends ListActivity {
 
                             try {
                                 // Getting JSON Array(Messages) and Sequence number
-
+                                if(json==null)
+                                    return false;
                                 if(seqNumber!=json.getInt("nextSeq")) {
                                 result=true;
                                 }else
@@ -295,6 +303,13 @@ public class ChatActivity extends ListActivity {
         }
 
 
+
+
+
+
+
+
+
         @Override
         protected void onPostExecute(Boolean result) {
 
@@ -310,5 +325,32 @@ public class ChatActivity extends ListActivity {
         }
 
     }
+
+    private class postChat extends AsyncTask<Void, Integer, Boolean> {
+
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+
+            boolean result=false;
+
+            JSONparser.sendJSON("http://10.0.2.2:8080/chat-kata/api/chat",new Message(nick, msg));
+
+            return result;
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 
 }
