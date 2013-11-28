@@ -7,8 +7,8 @@
     <file path="/pom.xml" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385461308168" ignored="false" />
     <file path="/fragment.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385638086549" ignored="false" />
     <file path="/LoginActivityTest.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385484433403" ignored="false" />
-    <file path="/ChatActivity.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385638260363" ignored="false" />
-    <file path="/JSONparser.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385635668990" ignored="false" />
+    <file path="/ChatActivity.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385641753416" ignored="false" />
+    <file path="/JSONparser.java" changelist="7b1caf93-272b-4c5d-a3f7-fd6a9fddab84" time="1385641462322" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +61,7 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/net/JSONparser.java" line="91" class="org.ejmc.android.simplechat.net.JSONparser" package="org.ejmc.android.simplechat.net">
+      <breakpoint url="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/net/JSONparser.java" line="140" class="org.ejmc.android.simplechat.net.JSONparser" package="org.ejmc.android.simplechat.net">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -89,26 +89,17 @@
       <file leaf-file-name="ChatActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="37" selection-start="2151" selection-end="2154" vertical-scroll-proportion="0.5771144">
+            <state line="315" column="36" selection-start="8794" selection-end="8794" vertical-scroll-proportion="0.21814255">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3161#3837#0" expanded="true" />
-                <element signature="e#3263#3811#0" expanded="true" />
-                <element signature="e#3792#3793#0" expanded="true" />
-                <element signature="e#3826#3827#0" expanded="true" />
-                <element signature="e#3933#4952#0" expanded="true" />
-                <element signature="e#4941#4942#0" expanded="true" />
+                <element signature="e#2851#3191#0" expanded="true" />
+                <element signature="e#2953#3165#0" expanded="true" />
+                <element signature="e#3146#3147#0" expanded="true" />
+                <element signature="e#3180#3181#0" expanded="true" />
+                <element signature="e#3281#4302#0" expanded="true" />
+                <element signature="e#4291#4292#0" expanded="true" />
                 <element signature="class#getChat#0;class#ChatActivity#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Message.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/model/Message.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -116,7 +107,7 @@
       <file leaf-file-name="JSONparser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/net/JSONparser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="12" selection-start="3740" selection-end="3740" vertical-scroll-proportion="0.0">
+            <state line="147" column="0" selection-start="4538" selection-end="4538" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -247,6 +238,66 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="simplechat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chat-kata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SimpleChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simplechat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chat-kata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SimpleChat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simplechat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -535,17 +586,17 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991462" sideWeight="0.4997236" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32870865" sideWeight="0.5002764" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47812167" sideWeight="0.5002764" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32870865" sideWeight="0.4997236" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32870865" sideWeight="0.4997236" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32870865" sideWeight="0.4997236" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.4997236" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17191818" sideWeight="0.67129135" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47812167" sideWeight="0.4997236" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17191818" sideWeight="0.52187836" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47812167" sideWeight="0.4997236" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -618,22 +669,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/SimpleChat/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="70" selection-start="1685" selection-end="1685" vertical-scroll-proportion="0.82615894">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/net/Rest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="0" selection-start="2249" selection-end="2249" vertical-scroll-proportion="-0.76324505">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/SimpleChat/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="28" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.54086536">
@@ -709,29 +744,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/model/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0">
+        <state line="17" column="0" selection-start="293" selection-end="293" vertical-scroll-proportion="0.5507559">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Entornos/sdk-idea/platforms/android-15/android.jar!/org/apache/http/impl/client/DefaultHttpClient.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="11" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Entornos/sdk-idea/sources/android-15/org/json/JSONObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="0" selection-start="4984" selection-end="4984" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/net/JSONparser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="12" selection-start="3740" selection-end="3740" vertical-scroll-proportion="0.0">
+        <state line="147" column="0" selection-start="4538" selection-end="4538" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/SimpleChat/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="37" selection-start="2151" selection-end="2154" vertical-scroll-proportion="0.5771144">
+        <state line="315" column="36" selection-start="8794" selection-end="8794" vertical-scroll-proportion="0.21814255">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3161#3837#0" expanded="true" />
-            <element signature="e#3263#3811#0" expanded="true" />
-            <element signature="e#3792#3793#0" expanded="true" />
-            <element signature="e#3826#3827#0" expanded="true" />
-            <element signature="e#3933#4952#0" expanded="true" />
-            <element signature="e#4941#4942#0" expanded="true" />
+            <element signature="e#2851#3191#0" expanded="true" />
+            <element signature="e#2953#3165#0" expanded="true" />
+            <element signature="e#3146#3147#0" expanded="true" />
+            <element signature="e#3180#3181#0" expanded="true" />
+            <element signature="e#3281#4302#0" expanded="true" />
+            <element signature="e#4291#4292#0" expanded="true" />
             <element signature="class#getChat#0;class#ChatActivity#0" expanded="false" />
           </folding>
         </state>

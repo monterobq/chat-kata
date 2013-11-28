@@ -2,13 +2,8 @@ package org.ejmc.android.simplechat;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import com.google.gson.Gson;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import  org.ejmc.android.simplechat.model.*;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
 //import android.support.v4.app.NavUtils;
@@ -17,16 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import org.ejmc.android.simplechat.net.JSONparser;
-import org.ejmc.android.simplechat.net.Rest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Handler;
 
 /**
  * Chat activity.
@@ -116,20 +108,12 @@ public class ChatActivity extends ListActivity {
                     @Override
                     public void run()
                     {
-                        /*
-                        rest.get("http://google.com");
-                        rest.getResponseString();
-                        listado.add(
-                                new Message("Nombre 4", rest.getResponseText()));
-                        recargar();
-                                             */
-
                         new getChat().execute();
 
                     }
                 });
             }
-        }, 1000, 1000);  //Timer cada segundo, ejecuto el run
+        }, 1000, 1000);  //Timer execute GET per second
 
 
 
@@ -160,7 +144,7 @@ public class ChatActivity extends ListActivity {
 
 
                     recargar();
-                    lv.setSelection(lv.getAdapter().getCount() - 1);
+                   // lv.setSelection(lv.getAdapter().getCount() - 1);
                 }
                 editor.setText("");
             }
@@ -328,19 +312,36 @@ public class ChatActivity extends ListActivity {
 
     private class postChat extends AsyncTask<Void, Integer, Boolean> {
 
+        @Override
+        protected void onPreExecute(){
+            Toast.makeText(getApplicationContext(), "Sending", Toast.LENGTH_SHORT).show();
+
+        }
+
 
         @Override
         protected Boolean doInBackground(Void... params) {
 
             boolean result=false;
 
-            JSONparser.sendJSON("http://10.0.2.2:8080/chat-kata/api/chat",new Message(nick, msg));
+            String status=JSONparser.sendJSON("http://10.0.2.2:8080/chat-kata/api/chat",new Message(nick, msg));
+
+            if(status.equals("OK"))
+                result=true;
 
             return result;
         }
 
+        @Override
+        	    protected void onPostExecute(Boolean result) {
+            //Show status to the user
 
+            if(result)
+            Toast.makeText(getApplicationContext(), "Message has been sent", Toast.LENGTH_SHORT).show();
+            else
+            Toast.makeText(getApplicationContext(), "Couldn't been sent. Try again", Toast.LENGTH_SHORT).show();
 
+        }
     }
 
 
