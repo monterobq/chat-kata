@@ -181,6 +181,7 @@ public class ChatActivity extends ListActivity {
 
     public void recargar(){
 
+        checkNick();//Made group of message of the same user
         //adaptador = new Adaptador(
         //        Chat.this, listado);
         lv=(ListView)this.getListView();
@@ -188,7 +189,41 @@ public class ChatActivity extends ListActivity {
         lv.setSelection(lv.getAdapter().getCount() - 1);
     }
 
-	@Override
+    private void checkNick() {
+
+        int lenght=listado.size();
+        for (int i=0;i<lenght-1;i++){
+             if(lenght>1 && listado.get(i).getNombre().equals(listado.get(i+1).getNombre())){
+                 String lastmessage = listado.get(i+1).getMensaje();
+                 //listado.get(listado.size()).setMensaje(listado.get(listado.size()).getMensaje()+"/n"+msg);
+                 //listado.add(i,new Message(nick,msg+ "\n" +lastmessage));
+
+                 listado.get(i).setMensaje(listado.get(i).getMensaje()+ "\n" +lastmessage);
+                 listado.remove(i+1);
+                 //Recalculate the dimension of the array and the variable i for the next iteration
+                 i--;
+                 lenght=listado.size();
+             }
+
+
+
+        }
+
+
+        /*m = listado.get(listado.size() - 1);
+        if (m.getNombre().equals(nick)) {
+            String lastmessage = listado.get(listado.size() - 1).getMensaje();
+            //listado.get(listado.size()).setMensaje(listado.get(listado.size()).getMensaje()+"/n"+msg);
+            listado.remove(listado.size() - 1);
+            listado.add(new Message(nick, lastmessage + "\n" + msg));
+
+        } else {
+            listado.add(new Message(nick, msg));
+        }*/
+
+    }
+
+    @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.chat, menu);
 		return true;
@@ -314,7 +349,7 @@ public class ChatActivity extends ListActivity {
 
         @Override
         protected void onPreExecute(){
-            Toast.makeText(getApplicationContext(), "Sending", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Sending:"+msg, Toast.LENGTH_SHORT).show();
 
         }
 
