@@ -52,24 +52,19 @@ public class ChatActivity extends ListActivity {
 
     private static String url = "http://10.0.2.2:8080/chat-kata/api/chat?seq=";
 
-    //JSON Node Names
-    private static final String TAG_USER = "user";
-    private static final String TAG_ID = "id";
-    private static final String TAG_NAME = "name";
-    private static final String TAG_EMAIL = "email";
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
+        nick = getIntent().getExtras().getString("nick");
         prefs = getSharedPreferences("Chat", Context.MODE_PRIVATE);
 
 
-        seqNumber = prefs.getInt("SEQ", 0);
+        seqNumber = prefs.getInt("SEQ_"+nick, 0);
 
-        nick = getIntent().getExtras().getString("nick");
+
         name = (TextView) findViewById(R.id.nick);
         name.setText("Wellcome " + nick + "!!!");
         editor = (EditText) findViewById(R.id.editTextMensaje);
@@ -105,17 +100,15 @@ public class ChatActivity extends ListActivity {
         }, 1000, 1000);  //Timer execute GET per second
 
 
-
-               /*
-                //Evvent with the listView
+                //Event with the listView
               lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                   @Override
                   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        /*
+
                       chatList.remove(lv.getItemAtPosition(position));
                       recargar();
-                      */
+
                      /*
                      Message message=(Message) lv.getItemAtPosition(position);
                       Toast.makeText(getApplicationContext(), message.getMensaje(), Toast.LENGTH_LONG).show();
@@ -130,9 +123,9 @@ public class ChatActivity extends ListActivity {
 
                     */
 
-                  /*
+
                   }
-              });  */
+              });
 
 
         boton.setOnClickListener(new View.OnClickListener() {
@@ -140,16 +133,8 @@ public class ChatActivity extends ListActivity {
             public void onClick(View v) {
                 msg = editor.getText().toString();
                 if (hayCaracter(msg)) {//lo envio si no no
-                    Message m = chatList.get(chatList.size() - 1);
-                    /*if (m.getNombre().equals(nick)) {
-                        String lastmessage = chatList.get(chatList.size() - 1).getMensaje();
-                        //chatList.get(chatList.size()).setMensaje(chatList.get(chatList.size()).getMensaje()+"/n"+msg);
-                        chatList.remove(chatList.size() - 1);
-                        chatList.add(new Message(nick, lastmessage + "\n" + msg));
+                    //Message m = chatList.get(chatList.size() - 1);
 
-                    } else {
-                        chatList.add(new Message(nick, msg));
-                    }   */
 
                     new postChat().execute();
 
@@ -166,7 +151,7 @@ public class ChatActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        prefs.edit().putInt("SEQ", seqNumber).commit();
+        prefs.edit().putInt("SEQ_"+nick, seqNumber).commit();
     }
 
     @Override
