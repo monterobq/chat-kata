@@ -105,10 +105,10 @@ public class ChatActivity extends ListActivity {
 
                   @Override
                   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                       /*
                       chatList.remove(lv.getItemAtPosition(position));
                       recargar();
-
+                         */
                      /*
                      Message message=(Message) lv.getItemAtPosition(position);
                       Toast.makeText(getApplicationContext(), message.getMensaje(), Toast.LENGTH_LONG).show();
