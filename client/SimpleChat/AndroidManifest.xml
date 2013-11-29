@@ -8,6 +8,7 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="14" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -32,14 +33,12 @@
         </activity>
         <activity
             android:name="org.ejmc.android.simplechat.ChatActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.ejmc.android.simplechat.LoginActivity" />
         </activity>
-
-        <uses-permission android:name="android.permission.INTERNET" />
 
     </application>
 

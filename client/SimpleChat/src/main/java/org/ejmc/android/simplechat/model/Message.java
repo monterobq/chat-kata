@@ -12,9 +12,15 @@ public class Message {
     private String nombre;
     private String mensaje;
 
-    public Message(String nombre, String mensaje) {
+
+
+    private int scr;
+
+
+    public Message(String nombre, String mensaje, int scr) {
         this.nombre = nombre;
         this.mensaje = mensaje;
+        this.scr=scr;
     }
 
 
@@ -26,5 +32,11 @@ public class Message {
 
     public String getMensaje() { return mensaje; }
 
+    public int getScr() {
+        return scr;
+    }
 
+    public void setScr(int scr) {
+        this.scr = scr;
+    }
 }

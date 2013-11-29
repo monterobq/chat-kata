@@ -3,6 +3,7 @@ package org.ejmc.android.simplechat;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Vibrator;
 import org.ejmc.android.simplechat.model.*;
 
 import android.app.ListActivity;
@@ -32,7 +33,7 @@ public class ChatActivity extends ListActivity {
      */
 
     private EditText editor;
-    private ImageButton boton;
+    private ImageButton sendButton;
     private TextView name;
     private String nick;
     private ArrayList<Message> chatList;
@@ -42,6 +43,7 @@ public class ChatActivity extends ListActivity {
     private String msg;
     private SharedPreferences prefs;
     private View row;
+    private Context here;
 
 
     //URL to get JSON Array
@@ -58,6 +60,7 @@ public class ChatActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        here=this;
         nick = getIntent().getExtras().getString("nick");
         prefs = getSharedPreferences("Chat", Context.MODE_PRIVATE);
 
@@ -68,7 +71,7 @@ public class ChatActivity extends ListActivity {
         name = (TextView) findViewById(R.id.nick);
         name.setText("Wellcome " + nick + "!!!");
         editor = (EditText) findViewById(R.id.editTextMensaje);
-        boton = (ImageButton) findViewById(R.id.sendButton);
+        sendButton = (ImageButton) findViewById(R.id.sendButton);
 
         chatList =
                 new ArrayList<Message>();
@@ -131,7 +134,7 @@ public class ChatActivity extends ListActivity {
 
 
 
-        boton.setOnClickListener(new View.OnClickListener() {
+        sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 msg = editor.getText().toString();
@@ -181,6 +184,7 @@ public class ChatActivity extends ListActivity {
     public void refresh() {
 
         checkNick();//Made group of message of the same user
+
         lv = (ListView) this.getListView();
         setListAdapter((ListAdapter) adapter);
         lv.setSelection(lv.getAdapter().getCount() - 1);
@@ -258,8 +262,14 @@ public class ChatActivity extends ListActivity {
                     for (int i = seqNumber; i < arrayJS.length(); i++) {
 
                         JSONObject c = arrayJS.getJSONObject(i);
+                        int scr;
+                        if(c.getString("nick").equals(nick))
+                          scr=R.drawable.flecha;
+                        else
+                            scr=R.drawable.flecha_roja;
 
-                        chatList.add(new Message(c.getString("nick"), c.getString("message")));
+
+                        chatList.add(new Message(c.getString("nick"), c.getString("message"),scr));
 
                     }
                 }
@@ -278,9 +288,13 @@ public class ChatActivity extends ListActivity {
         protected void onPostExecute(Boolean result) {
 
             //If someone send a new message...
-            if (result)
+            if (result){
                 refresh();
 
+                Vibrator v = (Vibrator) getSystemService(here.VIBRATOR_SERVICE);
+// Vibrate for 500 milliseconds
+                v.vibrate(500);
+            }
         }
 
     }
@@ -299,7 +313,7 @@ public class ChatActivity extends ListActivity {
 
             boolean result = false;
 
-            String status = JSONparser.sendJSON("http://10.0.2.2:8080/chat-kata/api/chat", new Message(nick, msg));
+            String status = JSONparser.sendJSON("http://10.0.2.2:8080/chat-kata/api/chat", new Message(nick, msg,R.drawable.flecha));
 
             if (status.equals("OK"))
                 result = true;

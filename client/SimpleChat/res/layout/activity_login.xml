@@ -6,13 +6,13 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:layout_gravity="center_vertical|center_horizontal|center"
-             tools:context=".Login" android:clickable="false">
+             tools:context=".Login" android:clickable="false" android:background="@drawable/dark_background">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:orientation="vertical" android:background="@drawable/dark_background">
+            android:orientation="vertical" >
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -23,8 +23,9 @@
                     android:id="@+id/editUsuario"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" android:maxLength="16" android:background="@drawable/grey_rectangular_background"
-                    android:text="User" android:gravity="center">
+                    android:layout_weight="1" android:maxLength="16"
+                    android:hint="User" android:gravity="center"
+                    android:background="@drawable/grey_rectangular_background">
 
 
             </EditText>
@@ -40,8 +41,9 @@
                     android:id="@+id/editPwd"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" android:maxLength="16" android:background="@drawable/grey_rectangular_background"
-                    android:text="Pass" android:gravity="center">
+                    android:layout_weight="1" android:maxLength="16"
+                    android:hint="Pass" android:gravity="center"
+                    android:background="@drawable/grey_rectangular_background">
 
 
             </EditText>

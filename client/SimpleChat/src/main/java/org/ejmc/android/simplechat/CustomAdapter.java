@@ -59,7 +59,7 @@ public class CustomAdapter extends BaseAdapter {
         Message versiones = (Message) getItem(arg0);
         contenedor.nombre.setText(versiones.getNombre());
         contenedor.mensaje.setText(versiones.getMensaje());
-        contenedor.logo.setImageResource(R.drawable.flecha);
+        contenedor.logo.setImageResource(versiones.getScr());
 
         return arg1;
     }
