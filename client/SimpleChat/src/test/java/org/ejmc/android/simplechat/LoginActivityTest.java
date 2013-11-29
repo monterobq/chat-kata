@@ -22,4 +22,11 @@ public class LoginActivityTest {
         String appName = new LoginActivity().getResources().getString(R.string.app_name);
         assertThat(appName, equalTo("SimpleChat"));
     }
+
+    @Test
+    public void shouldHaveName() throws Exception{
+        Boolean name = new LoginActivity().hayCaracter(" ");
+        assertThat(name, equalTo(false));
+    }
+
 }

@@ -6,30 +6,25 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:layout_gravity="center_vertical|center_horizontal|center"
-             tools:context=".Login">
+             tools:context=".Login" android:clickable="false">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:orientation="vertical" >
+            android:orientation="vertical" android:background="@drawable/dark_background">
 
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal|center" android:padding="10dp">
 
-            <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="User: " />
-
             <EditText
                     android:id="@+id/editUsuario"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" android:maxLength="16">
+                    android:layout_weight="1" android:maxLength="16" android:background="@drawable/grey_rectangular_background"
+                    android:text="User" android:gravity="center">
 
 
             </EditText>
@@ -41,17 +36,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal|center" android:padding="10dp">
 
-            <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pass:" />
-
             <EditText
                     android:id="@+id/editPwd"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" android:maxLength="16">
+                    android:layout_weight="1" android:maxLength="16" android:background="@drawable/grey_rectangular_background"
+                    android:text="Pass" android:gravity="center">
 
 
             </EditText>
@@ -70,7 +60,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal|center"
-                android:text="Log In" android:padding="10dp"/>
+                android:text="Log In" android:padding="10dp"
+                android:background="@drawable/aqua_back"/>
 
     </LinearLayout>
 

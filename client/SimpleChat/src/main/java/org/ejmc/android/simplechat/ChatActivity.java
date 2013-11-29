@@ -73,12 +73,12 @@ public class ChatActivity extends ListActivity {
         chatList =
                 new ArrayList<Message>();
 
-        chatList.add(
-                new Message("Hey " + nick + ",", "Look the message that you haven't read yet!!"));
+       /* chatList.add(
+                new Message("Hey " + nick + ",", "Look the message that you haven't read yet!!"));*/
 
 
         adapter = new CustomAdapter(ChatActivity.this, chatList);
-        recargar();
+        refresh();
         lv = (ListView) this.getListView();
 
 
@@ -107,7 +107,7 @@ public class ChatActivity extends ListActivity {
                   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                        /*
                       chatList.remove(lv.getItemAtPosition(position));
-                      recargar();
+                      refresh();
                          */
                      /*
                      Message message=(Message) lv.getItemAtPosition(position);
@@ -128,18 +128,21 @@ public class ChatActivity extends ListActivity {
               });
 
 
+
+
+
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 msg = editor.getText().toString();
-                if (hayCaracter(msg)) {//lo envio si no no
+                if (isNotEmpty(msg)) {//lo envio si no no
                     //Message m = chatList.get(chatList.size() - 1);
 
 
                     new postChat().execute();
 
 
-                    recargar();
+                    refresh();
                     // lv.setSelection(lv.getAdapter().getCount() - 1);
                 }
                 editor.setText("");
@@ -167,15 +170,15 @@ public class ChatActivity extends ListActivity {
         super.onSaveInstanceState(outState);
     }
 
-    public boolean hayCaracter(String cadena) {
-        for (int i = 0; i < cadena.length() - 1; i++) {
-            if (cadena.charAt(i) != ' ' && cadena.charAt(i) != '\n' && cadena.charAt(i) != '\t')//tiene algun caracter distinto de ' '
+    public boolean isNotEmpty(String text) {
+        for (int i = 0; i < text.length() - 1; i++) {
+            if (text.charAt(i) != ' ' && text.charAt(i) != '\n' && text.charAt(i) != '\t')
                 return true;
         }
         return false;
     }
 
-    public void recargar() {
+    public void refresh() {
 
         checkNick();//Made group of message of the same user
         lv = (ListView) this.getListView();
@@ -276,7 +279,7 @@ public class ChatActivity extends ListActivity {
 
             //If someone send a new message...
             if (result)
-                recargar();
+                refresh();
 
         }
 
