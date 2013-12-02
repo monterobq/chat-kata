@@ -1,6 +1,8 @@
 package org.ejmc.android.simplechat;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Vibrator;
@@ -44,28 +46,24 @@ public class ChatActivity extends ListActivity {
     private SharedPreferences prefs;
     private View row;
     private Context here;
+    private int pos;
 
 
     //URL to get JSON Array
-    //private static String url = "http://10.0.2.2:8080/chat-kata/api/chat?seq=0";
-
-    //private static String url ="http://172.16.100.73:8080/chat-kata/api/chat?seq=";
-
-
     private static String url = "http://10.0.2.2:8080/chat-kata/api/chat?seq=";
-
-
+    //private static String url = "http: 172.16.100.73:8080/chat-kata/api/chat?seq=";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        here=this;
+        here = this;
         nick = getIntent().getExtras().getString("nick");
         prefs = getSharedPreferences("Chat", Context.MODE_PRIVATE);
 
 
-        seqNumber = prefs.getInt("SEQ_"+nick, 0);
+
+        seqNumber = prefs.getInt("SEQ_" + nick, 0);
 
 
         name = (TextView) findViewById(R.id.nick);
@@ -103,12 +101,12 @@ public class ChatActivity extends ListActivity {
         }, 1000, 1000);  //Timer execute GET per second
 
 
-                //Event with the listView
-              lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //Event with the listView
+            /*  lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                   @Override
                   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                       /*
+
                       chatList.remove(lv.getItemAtPosition(position));
                       refresh();
                          */
@@ -124,14 +122,61 @@ public class ChatActivity extends ListActivity {
                       row = view;
                       view.setBackgroundResource(R.color.Rojo);
 
-                    */
+
 
 
                   }
-              });
+              });  */
+
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int position, long id) {
+                pos=position;
+
+                AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(
+                        ChatActivity.this);
+
+// Setting Dialog Title
+                alertDialog2.setTitle("Confirm Delete...");
+
+// Setting Dialog Message
+                alertDialog2.setMessage("Are you sure you want delete this message?");
+
+// Setting Icon to Dialog
+                alertDialog2.setIcon(R.drawable.delete);
+
+// Setting Positive "Yes" Btn
+                alertDialog2.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                chatList.remove(lv.getItemAtPosition(pos));
+                                refresh();
+                                Toast.makeText(getApplicationContext(),
+                                        "You have deleted the message", Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+                        });
+// Setting Negative "NO" Btn
+                alertDialog2.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Write your code here to execute after dialog
+                                Toast.makeText(getApplicationContext(),
+                                        "You didn't delete anything", Toast.LENGTH_SHORT)
+                                        .show();
+                                dialog.cancel();
+                            }
+                        });
+
+// Showing Alert Dialog
+                alertDialog2.show();
 
 
 
+                return true;
+            }
+        });
 
 
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -157,7 +202,7 @@ public class ChatActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        prefs.edit().putInt("SEQ_"+nick, seqNumber).commit();
+        prefs.edit().putInt("SEQ_" + nick, seqNumber).commit();
     }
 
     @Override
@@ -263,13 +308,13 @@ public class ChatActivity extends ListActivity {
 
                         JSONObject c = arrayJS.getJSONObject(i);
                         int scr;
-                        if(c.getString("nick").equals(nick))
-                          scr=R.drawable.flecha;
+                        if (c.getString("nick").equals(nick))
+                            scr = R.drawable.green_speech;
                         else
-                            scr=R.drawable.flecha_roja;
+                            scr = R.drawable.transparente;
 
 
-                        chatList.add(new Message(c.getString("nick"), c.getString("message"),scr));
+                        chatList.add(new Message(c.getString("nick"), c.getString("message"), scr));
 
                     }
                 }
@@ -287,8 +332,10 @@ public class ChatActivity extends ListActivity {
         @Override
         protected void onPostExecute(Boolean result) {
 
+
+
             //If someone send a new message...
-            if (result){
+            if (result) {
                 refresh();
 
                 Vibrator v = (Vibrator) getSystemService(here.VIBRATOR_SERVICE);
@@ -313,7 +360,8 @@ public class ChatActivity extends ListActivity {
 
             boolean result = false;
 
-            String status = JSONparser.sendJSON("http://10.0.2.2:8080/chat-kata/api/chat", new Message(nick, msg,R.drawable.flecha));
+            String status = JSONparser.sendJSON("http://10.0.2.2:8080/chat-kata/api/chat", new Message(nick, msg, R.drawable.flecha));
+            //String status = JSONparser.sendJSON("http://172.16.100.73:8080/chat-kata/api/chat", new Message(nick, msg, R.drawable.flecha));
 
             if (status.equals("OK"))
                 result = true;
@@ -328,7 +376,7 @@ public class ChatActivity extends ListActivity {
             if (result)
                 Toast.makeText(getApplicationContext(), "Message has been sent", Toast.LENGTH_SHORT).show();
             else
-                Toast.makeText(getApplicationContext(), "Couldn't been sent. Try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Message couldn't been sent. Try again", Toast.LENGTH_SHORT).show();
 
         }
     }

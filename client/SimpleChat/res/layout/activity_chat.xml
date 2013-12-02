@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-        >
+              android:baselineAligned="false" android:longClickable="false">
 
     <TextView
             android:layout_width="fill_parent"
@@ -27,8 +27,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
                 android:id="@+id/sendButton" android:layout_weight="6" android:longClickable="false"
-                android:src="@drawable/flecha_roja" android:scaleType="fitXY" android:padding="1dp"
-                android:baselineAlignBottom="true" android:layout_gravity="center"/>
+                android:src="@drawable/flecha" android:scaleType="fitXY" android:padding="1dp"
+                android:baselineAlignBottom="true" android:layout_gravity="center" android:background="@color/White"/>
     </LinearLayout>
 
 </LinearLayout>
